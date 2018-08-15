@@ -1,4 +1,4 @@
-class Ingredient {
+class Recipe {
   constructor(data) {
     this.id = data.id ? data.id : undefined;
     this.name = data.name;
@@ -7,4 +7,4 @@ class Ingredient {
 
 };
 
-export default Ingredient;
+export default Recipe;
