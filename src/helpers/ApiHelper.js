@@ -1,6 +1,8 @@
-class RequestHelper {
-  constructor(url) {
-    this.url = url;
+import config from 'config.js';
+
+class ApiHelper {
+  constructor(apiEndpoint) {
+    this.url = `${config.apiUrl}${apiEndpoint}`;
   };
 
   get() {
@@ -37,4 +39,4 @@ class RequestHelper {
 };
 
 
-export default RequestHelper;
+export default ApiHelper;
