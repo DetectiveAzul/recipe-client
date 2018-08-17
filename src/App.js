@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 // import { navigate } from '@reach/router';
-// import Request from './helpers/ApiHelper.js';
+import ApiHelper from './helpers/ApiHelper.js';
+
 //Components
 import NavBar from './components/NavBar.js';
+import IngredientsList from './containers/IngredientsList.js';
+import RecipesList from './containers/RecipesList.js';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.getDataFromDb = this.getDataFromDb.bind(this);
+  }
+  getDataFromDb(endPoint) {
+    const request = new ApiHelper(endPoint);
+    request.get()
+      .then(res => console.log(res));
+  }
+
   render() {
-    // const request = new Request('recipes');
-    // request.delete(1)
-    //   .then(res => console.log(res));
 
     return (
       <div className="App">
         <NavBar />
         <Router>
+          <RecipesList
+            path="recipes"
+            get={this.getDataFromDb}
+          />
+          <IngredientsList
+            path="ingredients"
+            get={this.getDataFromDb}
+          />
         </Router>
       </div>
     );
