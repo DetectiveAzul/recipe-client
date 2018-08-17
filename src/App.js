@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { Router, Link } from '@reach/router';
+// import { navigate } from '@reach/router';
 // import Request from './helpers/ApiHelper.js';
+//Components
+import NavBar from './components/NavBar.js';
 
 class App extends Component {
   render() {
@@ -9,7 +13,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hello World</h1>
+        <NavBar />
+        <Router>
+        </Router>
       </div>
     );
   }
