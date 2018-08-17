@@ -1,39 +1,32 @@
-import config from 'config.js';
+import config from './config.js';
+import fetch from 'node-fetch';
 
 class ApiHelper {
   constructor(apiEndpoint) {
     this.url = `${config.apiUrl}${apiEndpoint}`;
   };
 
-  get() {
-    return fetch(this.url)
-      .then((response) => response.json());
+  async get() {
+    try {
+      const response = await fetch(this.url);
+      return await response.json();
+    }
+    catch(error) {
+      return error;
+    }
   };
 
-  delete(id) {
-    return fetch(`${this.url}/${id}`, {
-      method: 'DELETE'
-    })
-      .then((response) => response.json());
+  async delete(id) {
+
   };
 
 
-  post(payload) {
-    return fetch(this.url, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then((response) => response.json());
+  async post(payload) {
+
   };
 
-  put(id, payload) {
-    return fetch(`${this.url}/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(payload),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then((response) => response.json());
+  async put(id, payload) {
+
   };
 
 };
