@@ -6,8 +6,8 @@ describe('Step', function() {
   let step02;
 
   beforeEach(function() {
-    step01 = new Step({recipeId: 1, stepNumber: 1, stepDescription: 'Push the egg'});
-    step02 = new Step({id: 1, recipeId: 1, stepNumber: 2, stepDescription: 'Fry the egg'});
+    step01 = new Step({recipeid: 1, stepnumber: 1, stepdescription: 'Push the egg'});
+    step02 = new Step({id: 1, recipeid: 1, stepnumber: 2, stepdescription: 'Fry the egg'});
   });
 
   it('should have a recipeId', function() {

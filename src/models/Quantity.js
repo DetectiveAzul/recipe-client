@@ -1,10 +1,10 @@
 class Quantity {
   constructor(data) {
     this.id = data.id ? data.id : undefined;
-    this.recipeId = data.recipeId;
-    this.ingredientId = data.ingredientId;
-    this.measurementId = data.measurementId;
-    this.ingredientQuantity = data.ingredientQuantity;
+    this.recipeId = data.recipeid;
+    this.ingredientId = data.ingredientid;
+    this.measurementId = data.measurementid;
+    this.ingredientQuantity = data.ingredientquantity;
   };
 
 };

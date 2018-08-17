@@ -7,17 +7,17 @@ describe('Quantity', function() {
 
   beforeEach(function() {
     quantity01 = new Quantity({
-      recipeId: 1,
-      ingredientId: 1,
-      measurementId: 1,
-      ingredientQuantity: 10.00
+      recipeid: 1,
+      ingredientid: 1,
+      measurementid: 1,
+      ingredientquantity: 10.00
     });
     quantity02 = new Quantity({
       id: 1,
-      recipeId: 1,
-      ingredientId: 1,
-      measurementId: 1,
-      ingredientQuantity: 10.00
+      recipeid: 1,
+      ingredientid: 1,
+      measurementid: 1,
+      ingredientquantity: 10.00
     });
   });
 
