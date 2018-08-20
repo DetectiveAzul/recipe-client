@@ -12,7 +12,6 @@ const Index = (props) => {
           key={index}
           recipeData={recipeData}
           delete={props.delete}
-          submit={props.submit}
         />
       );
     });
@@ -20,7 +19,7 @@ const Index = (props) => {
 
   return(
     <div className='index'>
-      <RecipeForm submit={this.submit} />
+      <RecipeForm submit={props.submit} />
       {mapRecipes(props.data)}
     </div>
   );
