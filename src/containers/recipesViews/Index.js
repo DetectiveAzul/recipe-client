@@ -12,6 +12,7 @@ const Index = (props) => {
           key={index}
           recipeData={recipeData}
           delete={props.delete}
+          submit={props.submit}
         />
       );
     });
