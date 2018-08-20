@@ -37,7 +37,7 @@ const Recipe = (props) => {
 
   return(
     <RecipeWrapper>
-      <InfoWrapper onClick={() => { navigate(`recipes/${props.id}`) }}>
+      <InfoWrapper onClick={() => { navigate(`recipes/${props.recipeData.id}`) }}>
         <h3>{props.recipeData.name}</h3>
         <p>{props.recipeData.description}</p>
       </InfoWrapper>
