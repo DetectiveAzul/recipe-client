@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
-// import { navigate } from '@reach/router';
-import ApiHelper from './helpers/ApiHelper.js';
 
 //Components
 import NavBar from './components/NavBar.js';
 import IngredientsList from './containers/IngredientsList.js';
-import RecipesList from './containers/RecipesList.js';
+import RecipesContainer from './containers/RecipesContainer.js';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.getDataFromDb = this.getDataFromDb.bind(this);
-  }
-  getDataFromDb(endPoint) {
-    const request = new ApiHelper(endPoint);
-    request.get()
-      .then(res => console.log(res));
-  }
 
   render() {
 
@@ -26,13 +14,11 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Router>
-          <RecipesList
-            path="recipes"
-            get={this.getDataFromDb}
+          <RecipesContainer
+            path="recipes/*"
           />
           <IngredientsList
             path="ingredients"
-            get={this.getDataFromDb}
           />
         </Router>
       </div>
