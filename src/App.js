@@ -11,13 +11,6 @@ import RecipesList from './containers/RecipesList.js';
 class App extends Component {
   constructor() {
     super();
-
-    this.getDataFromDb = this.getDataFromDb.bind(this);
-  }
-  getDataFromDb(endPoint) {
-    const request = new ApiHelper(endPoint);
-    request.get()
-      .then(res => console.log(res));
   }
 
   render() {
@@ -28,11 +21,9 @@ class App extends Component {
         <Router>
           <RecipesList
             path="recipes"
-            get={this.getDataFromDb}
           />
           <IngredientsList
             path="ingredients"
-            get={this.getDataFromDb}
           />
         </Router>
       </div>
