@@ -32,7 +32,7 @@ const Button = styled.button`
 const Recipe = (props) => {
 
   const handleClick = (event) => {
-    props.delete(props.id);
+    props.delete(props.recipeData.id);
   }
 
   return(
