@@ -1,10 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const RecipeWrapper = styled.div `
+  display: flex;
+`
+const InfoWrapper = styled.div`
   background: ${props => props.primary ? 'palevioletred' : 'white'};
   color: ${props => props.primary ? 'white' : 'palevioletred'};
+  flex: 3;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
+const Button = styled.button`
+  background: ${props => props.primary ? 'palevioletred' : 'white'};
+  color: ${props => props.primary ? 'white' : 'palevioletred'};
+  flex: 1;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -20,20 +34,13 @@ const Recipe = (props) => {
   }
 
   return(
-<<<<<<< HEAD
-    <div className='recipe'>
-      <div className='recipe-info'>
+    <RecipeWrapper>
+      <InfoWrapper>
         <h3>{props.name}</h3>
         <p>{props.description}</p>
-      </div>
-      <button onClick={handleClick}>Delete</button>
-    </div>
-=======
-    <Wrapper className='recipe'>
-      <h3>{props.name}</h3>
-      <p>{props.description}</p>
-    </Wrapper>
->>>>>>> development
+      </InfoWrapper>
+      <Button onClick={handleClick}>Delete</Button>
+    </RecipeWrapper>
   );
 };
 

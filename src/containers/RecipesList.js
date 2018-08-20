@@ -21,12 +21,15 @@ class RecipesList extends Component {
     const api = new ApiHelper('recipes');
     api.get()
       .then((res) => {
-        const newRecipes = this.mapRecipes(res.data);
-        this.setState({
+        if (res.status !== 'error')
+        {
+          const newRecipes = this.mapRecipes(res.data);
+          this.setState({
           recipes: newRecipes
-        });
+          });
+        }
       });
-  };
+    };
 
   mapRecipes(recipesData) {
     return recipesData.map((recipeData, index) => {
