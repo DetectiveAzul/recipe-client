@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
-// import { navigate } from '@reach/router';
 
 //Components
 import NavBar from './components/NavBar.js';
 import IngredientsList from './containers/IngredientsList.js';
-import RecipesList from './containers/RecipesList.js';
+import RecipesContainer from './containers/RecipesContainer.js';
 
 class App extends Component {
 
@@ -15,8 +14,8 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Router>
-          <RecipesList
-            path="recipes"
+          <RecipesContainer
+            path="recipes/*"
           />
           <IngredientsList
             path="ingredients"

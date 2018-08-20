@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { navigate } from '@reach/router';
+
 
 const RecipeWrapper = styled.div `
   display: flex;
@@ -30,14 +32,14 @@ const Button = styled.button`
 const Recipe = (props) => {
 
   const handleClick = (event) => {
-    props.onClick(props.id);
+    props.delete(props.id);
   }
 
   return(
     <RecipeWrapper>
-      <InfoWrapper>
-        <h3>{props.name}</h3>
-        <p>{props.description}</p>
+      <InfoWrapper onClick={() => { navigate(`recipes/${props.id}`) }}>
+        <h3>{props.recipeData.name}</h3>
+        <p>{props.recipeData.description}</p>
       </InfoWrapper>
       <Button onClick={handleClick}>Delete</Button>
     </RecipeWrapper>

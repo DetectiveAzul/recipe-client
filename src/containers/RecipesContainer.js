@@ -1,8 +1,9 @@
 //TODO: Refactor to REDUX SINTAX
 import ApiHelper from '../helpers/ApiHelper.js';
 import React, {Component} from 'react';
-import Recipe from '../components/Recipe.js';
-import RecipeForm from '../components/RecipeForm.js';
+import { Router } from '@reach/router';
+import Show from './recipesViews/Show.js';
+import Index from './recipesViews/Index.js';
 
 class RecipesList extends Component {
   constructor() {
@@ -11,8 +12,8 @@ class RecipesList extends Component {
       recipes: []
     };
 
-    this.deleteButton = this.deleteButton.bind(this);
-    this.submitButton = this.submitButton.bind(this);
+    this.delete = this.delete.bind(this);
+    this.submit = this.submit.bind(this);
   };
 
   componentDidMount() {
@@ -25,9 +26,8 @@ class RecipesList extends Component {
       .then((res) => {
         if (res.status !== 'error')
         {
-          const newRecipes = this.mapRecipes(res.data);
           this.setState({
-          recipes: newRecipes
+          recipes: res.data
           });
         } else {
           this.setState({
@@ -37,21 +37,7 @@ class RecipesList extends Component {
       });
     };
 
-  mapRecipes(recipesData) {
-    return recipesData.map((recipeData, index) => {
-      return(
-        <Recipe
-          key={index}
-          id={recipeData.id}
-          name={recipeData.name}
-          description={recipeData.description}
-          onClick={this.deleteButton}
-        />
-      );
-    });
-  };
-
-  deleteButton(index) {
+  delete(index) {
     const api = new ApiHelper('recipes');
     api.delete(index)
       .then(() => {
@@ -59,7 +45,7 @@ class RecipesList extends Component {
       });
   };
 
-  submitButton(newRecipe) {
+  submit(newRecipe) {
     const api = new ApiHelper('recipes');
     api.post(newRecipe)
       .then(() => {
@@ -71,8 +57,15 @@ class RecipesList extends Component {
     return(
     <div className="recipes-list">
       <h1>RecipesList</h1>
-      <RecipeForm submit={this.submitButton} />
-      {this.state.recipes}
+      <Router>
+        <Index
+          path="/"
+          data={this.state.recipes}
+          delete={this.delete}
+          submit={this.submit}
+        />
+        <Show path="/:id" data={this.state.}/>
+      </Router>
     </div>
   )};
 };
