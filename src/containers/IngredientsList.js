@@ -1,3 +1,5 @@
+//TODO: Refactor to REDUX SINTAX
+
 import React, {Component} from 'react';
 
 class IngredientsList extends Component {
