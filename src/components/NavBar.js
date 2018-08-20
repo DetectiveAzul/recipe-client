@@ -18,8 +18,8 @@ const NavBar = () => {
   return(
     <nav>
       {/*<Button>*/}<Link to="/">Home</Link>{/*</Button>*/} |{" "}
-      <Link to="/recipes">Recipes</Link> |{" "}
-      <Link to="/ingredients">Ingredients</Link>
+      <Link to="/recipes/">Recipes</Link> |{" "}
+      <Link to="/ingredients/">Ingredients</Link>
     </nav>
   );
 };
