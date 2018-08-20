@@ -27,7 +27,11 @@ class RecipesList extends Component {
           this.setState({
           recipes: newRecipes
           });
-        }
+        } else {
+          this.setState({
+            recipes: []
+          });
+        };
       });
     };
 
@@ -52,6 +56,10 @@ class RecipesList extends Component {
         this.getRecipes();
       });
   };
+
+  submitButton(index) {
+
+  }
 
   render() {
     return(
