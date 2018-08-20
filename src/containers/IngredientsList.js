@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ApiHelper from '../helpers/ApiHelper'
 import Ingredient from '../components/Ingredient'
+import IngredientForm from '../components/IngredientForm'
 
 class IngredientsList extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class IngredientsList extends Component {
     };
 
     this.deleteButton = this.deleteButton.bind(this)
+    this.submitButton = this.submitButton.bind(this)
   };
 
   getIngredients() {
@@ -46,6 +48,7 @@ class IngredientsList extends Component {
     })
   };
 
+
   deleteButton(index) {
     const api = new ApiHelper('ingredients');
     api.delete(index)
@@ -54,10 +57,21 @@ class IngredientsList extends Component {
       });
   };
 
+
+  submitButton(ingredient) {
+    const api = new ApiHelper('ingredients');
+    api.post(ingredient)
+      .then(() => {
+        this.getIngredients();
+    })
+  }
+
+
   render() {
     return(
       <div className="ingredients-list">
-      IngredientsList
+        <h1>Ingredients</h1>
+        <IngredientForm submit={this.submitButton}/>
         <ul>
           {this.state.ingredients}
         </ul>
