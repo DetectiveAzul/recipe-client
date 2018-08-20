@@ -2,6 +2,7 @@
 import ApiHelper from '../helpers/ApiHelper.js';
 import React, {Component} from 'react';
 import Recipe from '../components/Recipe.js';
+import RecipeForm from '../components/RecipeForm.js';
 
 class RecipesList extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class RecipesList extends Component {
     };
 
     this.deleteButton = this.deleteButton.bind(this);
+    this.submitButton = this.submitButton.bind(this);
   };
 
   componentDidMount() {
@@ -69,6 +71,7 @@ class RecipesList extends Component {
     return(
     <div className="recipes-list">
       <h1>RecipesList</h1>
+      <RecipeForm submit={this.submitButton} />
       {this.state.recipes}
     </div>
   )};
