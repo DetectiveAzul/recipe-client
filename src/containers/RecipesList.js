@@ -9,9 +9,15 @@ class RecipesList extends Component {
     this.state = {
       recipes: []
     };
+
+    this.deleteButton = this.deleteButton.bind(this);
   };
 
   componentDidMount() {
+    this.getRecipes();
+  };
+
+  getRecipes() {
     const api = new ApiHelper('recipes');
     api.get()
       .then((res) => {
@@ -27,11 +33,21 @@ class RecipesList extends Component {
       return(
         <Recipe
           key={index}
+          id={recipeData.id}
           name={recipeData.name}
           description={recipeData.description}
+          onClick={this.deleteButton}
         />
       );
     });
+  };
+
+  deleteButton(index) {
+    const api = new ApiHelper('recipes');
+    api.delete(index)
+      .then(() => {
+        this.getRecipes();
+      });
   };
 
   render() {
