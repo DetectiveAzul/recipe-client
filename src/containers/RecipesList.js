@@ -57,9 +57,13 @@ class RecipesList extends Component {
       });
   };
 
-  submitButton(index) {
-
-  }
+  submitButton(newRecipe) {
+    const api = new ApiHelper('recipes');
+    api.post(newRecipe)
+      .then(() => {
+        this.getRecipes();
+      });
+  };
 
   render() {
     return(
