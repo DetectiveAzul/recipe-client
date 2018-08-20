@@ -64,7 +64,7 @@ class RecipesList extends Component {
           delete={this.delete}
           submit={this.submit}
         />
-        <Show path="/:id" data={this.state.}/>
+        <Show path="/:id"/>
       </Router>
     </div>
   )};
