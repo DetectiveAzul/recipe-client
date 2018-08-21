@@ -35,7 +35,18 @@ class RecipesList extends Component {
           });
         };
       });
-    };
+  };
+
+  createShowPages() {
+    return this.state.recipes.map((recipe) => {
+      return (
+        <Show
+        path={`${recipe.id}`}
+        data={recipe}
+      />
+    )
+    });
+  };
 
   delete(index) {
     const api = new ApiHelper('recipes');
@@ -64,7 +75,7 @@ class RecipesList extends Component {
           delete={this.delete}
           submit={this.submit}
         />
-        <Show path="/:id"/>
+        {this.createShowPages()}
       </Router>
     </div>
   )};
