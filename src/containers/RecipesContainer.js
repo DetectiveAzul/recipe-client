@@ -42,7 +42,6 @@ class RecipesList extends Component {
       return (
         <Show
         path={`${recipe.id}`}
-        data={recipe}
       />
     )
     });
