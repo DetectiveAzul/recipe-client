@@ -1,3 +1,5 @@
+//TODO: REFACTOR TO REDUX
+
 import React, { Component } from 'react';
 import fetch from 'cross-fetch';
 import config from '../_helpers/config.js';
