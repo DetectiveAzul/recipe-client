@@ -1,6 +1,5 @@
 import {
-  ADD_RECIPE,
-  REMOVE_RECIPE
+  ADD_RECIPE
 } from '../actions/index.js';
 
 function recipes(state = [], action) {
@@ -11,7 +10,7 @@ function recipes(state = [], action) {
       ];
     default:
       return state;
-  };
+  }
 };
 
 export default recipes;

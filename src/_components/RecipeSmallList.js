@@ -15,7 +15,7 @@ const mapRecipes = (recipes) => {
 
 const RecipeSmallList = ({ recipes }) => {
   return(
-    <div className='index'/>
+    <div className='index'>
     { mapRecipes(recipes) }
     </div>
   );

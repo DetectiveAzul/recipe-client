@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 
-//Components
-import NavBar from './components.OLD/NavBar.js';
-import IngredientsList from './containers.OLD/IngredientsList.js';
-import RecipesContainer from './containers.OLD/RecipesContainer.js';
+//Containers
+import RecipeSmallListContainer from './_containers/RecipeSmallListContainer.js';
+
+//Helpers
+import ApiHelper from './_helpers/ApiHelper.js';
 
 class App extends Component {
 
   render() {
-
     return (
       <div className="App">
-        <NavBar />
         <Router>
-          <RecipesContainer
-            path="recipes/*"
+          <RecipeSmallListContainer
+            path='/recipes/'
+            recipes={{id: 1, name: 'Lasagna', description: 'ñam ñam'}}
           />
-          {/* <IngredientsList
-            path="ingredients"
-          /> */}
         </Router>
       </div>
     );
