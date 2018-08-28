@@ -67,7 +67,7 @@ class RecipeForm extends Component {
   submitRecipe(event) {
     event.preventDefault();
     console.log('Submitting Recipe');
-    console.log(event.target.form);
+    console.log(event.target);
   }
 
   render() {
