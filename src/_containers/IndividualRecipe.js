@@ -7,15 +7,15 @@ import RecipeIngredients from '../_components/RecipeView/RecipeIngredients.js'
 import RecipeSteps from '../_components/RecipeView/RecipeSteps.js'
 
 class IndividualRecipe extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       recipe: undefined
     };
   };
 
   componentDidMount() {
-    return fetch(`${config.apiUrl}recipes/1`)
+    return fetch(`${config.apiUrl}/recipes/${this.props.id}`)
       .then(response => response.json())
       .then(json => this.setState({
         recipe: json.data

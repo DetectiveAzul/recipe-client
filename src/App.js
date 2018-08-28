@@ -22,7 +22,7 @@ class App extends Component{
         <NavBar />
         <Router>
           <RecipesContainer path="/recipes/" recipes={recipes} />
-          <IndividualRecipe path="/recipes/*" />
+          <IndividualRecipe path="/recipes/:id" />
         </Router>
       </div>
     )
