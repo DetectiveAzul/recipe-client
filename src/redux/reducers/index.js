@@ -18,5 +18,5 @@ function recipes(state = [], action) {
 const recipeApp = combineReducers({
   recipes
 });
-​
+
 export default recipeApp;
