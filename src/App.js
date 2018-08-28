@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import RecipeSmallListContainer from './_containers/RecipesContainer.js';
+import { Router } from '@reach/router';
+import RecipesContainer from './_containers/RecipesContainer.js';
+import IndividualRecipe from './_containers/IndividualRecipe.js';
 import { connect } from 'react-redux';
 import {
   fetchRecipes
@@ -15,9 +17,10 @@ class App extends Component{
   render(){
     const { recipes } = this.props
     return(
-      <div>
-        <RecipeSmallListContainer recipes={recipes} />
-      </div>
+      <Router>
+        <RecipesContainer path="/recipes/" recipes={recipes} />
+        <IndividualRecipe path="/recipes/*" />
+      </Router>
     )
   }
 }
