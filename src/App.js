@@ -17,9 +17,9 @@ class App extends Component {
           <RecipesContainer
             path="recipes/*"
           />
-          <IngredientsList
+          {/* <IngredientsList
             path="ingredients"
-          />
+          /> */}
         </Router>
       </div>
     );

@@ -19,7 +19,6 @@ const NavBar = () => {
     <nav>
       {/*<Button>*/}<Link to="/">Home</Link>{/*</Button>*/} |{" "}
       <Link to="/recipes/">Recipes</Link> |{" "}
-      <Link to="/ingredients/">Ingredients</Link>
     </nav>
   );
 };
