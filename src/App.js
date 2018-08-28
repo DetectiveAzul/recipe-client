@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
-import { Router } from '@reach/router';
+import RecipeSmallListContainer from './_containers/RecipesContainer.js';
+import { connect } from 'react-redux';
+import {
+  fetchRecipes
+} from './redux/actions/index'
 
-//Containers
-import RecipeSmallListContainer from './_containers/RecipeSmallListContainer.js';
-import AddRecipe from './_containers/AddRecipe.js';
+class App extends Component{
 
-//Helpers
-import ApiHelper from './_helpers/ApiHelper.js';
+  componentDidMount(){
+    const dispatch = this.props.dispatch
+    dispatch(fetchRecipes())
+  }
 
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <AddRecipe />
-        <Router>
-          <RecipeSmallListContainer
-            path='/recipes/'
-          />
-        </Router>
+  render(){
+    const { recipes } = this.props
+    return(
+      <div>
+        <RecipeSmallListContainer recipes={recipes} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  return{
+    recipes: state.recipesReducer.recipes
+  }
+}
+
+export default connect(mapStateToProps)(App)

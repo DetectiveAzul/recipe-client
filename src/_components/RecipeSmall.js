@@ -16,8 +16,4 @@ const RecipeSmall = ({ recipe }) => {
   );
 };
 
-RecipeSmall.propTypes = {
-  recipe: PropTypes.object.isRequired
-};
-
 export default RecipeSmall;
