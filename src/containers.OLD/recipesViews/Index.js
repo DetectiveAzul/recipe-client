@@ -1,6 +1,6 @@
 import React from 'react';
-import Recipe from '../../components/Recipe.js';
-import RecipeForm from '../../components/RecipeForm.js';
+import Recipe from '../../components.OLD/Recipe.js';
+import RecipeForm from '../../components.OLD/RecipeForm.js';
 
 
 const Index = (props) => {

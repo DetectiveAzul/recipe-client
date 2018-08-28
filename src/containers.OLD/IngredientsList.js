@@ -2,8 +2,8 @@
 
 import React, {Component} from 'react';
 import ApiHelper from '../helpers/ApiHelper'
-import Ingredient from '../components/Ingredient'
-import IngredientForm from '../components/IngredientForm'
+import Ingredient from '../components.OLD/Ingredient'
+import IngredientForm from '../components.OLD/IngredientForm'
 
 class IngredientsList extends Component {
   constructor() {
