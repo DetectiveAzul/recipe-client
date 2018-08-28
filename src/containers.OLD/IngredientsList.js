@@ -1,7 +1,7 @@
 //TODO: Refactor to REDUX SINTAX
 
 import React, {Component} from 'react';
-import ApiHelper from '../helpers/ApiHelper'
+import ApiHelper from '../_helpers/ApiHelper'
 import Ingredient from '../components.OLD/Ingredient'
 import IngredientForm from '../components.OLD/IngredientForm'
 

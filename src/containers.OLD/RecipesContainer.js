@@ -1,5 +1,5 @@
 //TODO: Refactor to REDUX SINTAX
-import ApiHelper from '../helpers/ApiHelper.js';
+import ApiHelper from '../_helpers/ApiHelper.js';
 import React, {Component} from 'react';
 import { Router } from '@reach/router';
 import Show from './recipesViews/Show.js';
