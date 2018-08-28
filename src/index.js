@@ -8,6 +8,11 @@ import { recipeApp } from './redux/reducers/index.js';
 //APPfiles
 import App from './App.js';
 
+const store = createStore(recipeApp);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  ,document.getElementById('root'));
 registerServiceWorker();
