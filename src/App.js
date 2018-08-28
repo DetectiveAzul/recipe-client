@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import RecipesContainer from './_containers/RecipesContainer.js';
 import IndividualRecipe from './_containers/IndividualRecipe.js';
+import NewRecipe from './_containers/NewRecipe.js';
 import NavBar from './_components/NavBar.js';
 import { connect } from 'react-redux';
 import {
@@ -23,6 +24,7 @@ class App extends Component{
         <Router>
           <RecipesContainer path="/recipes/" recipes={recipes} />
           <IndividualRecipe path="/recipes/:id" />
+          <NewRecipe path="/recipes/new" />
         </Router>
       </div>
     )

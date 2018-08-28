@@ -6,7 +6,8 @@ const NavBar = () => {
   return(
     <nav>
       <Link to="/">Home</Link> |{" "}
-      <Link to="/recipes/">Recipes</Link>
+      <Link to="/recipes/">Recipes</Link> |{" "}
+      <Link to="/recipes/new/">New</Link>
     </nav>
   );
 };
