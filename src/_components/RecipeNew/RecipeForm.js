@@ -36,11 +36,11 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='ingredient-field'>
           <label>{`Ingredient ${i+1}`}</label>
-          <input type='text' name='ingredient'/>
+          <input type='text' name={`ingredient_${i}`}/>
           <label>Quantity</label>
-          <input type='number' name='quantity' />
+          <input type='number' name={`quantity_${i}`} />
           <label>Unit of Measurement</label>
-          <input type='text' name='measurement' />
+          <input type='text' name={`measurement_${i}`} />
            { (i === this.state.ingredientNumber -1) ?
             <button onClick={this.increaseIngredients}>+</button> : "" }
         </div>
@@ -67,7 +67,12 @@ class RecipeForm extends Component {
   submitRecipe(event) {
     event.preventDefault();
     console.log('Submitting Recipe');
-    console.log(event.target);
+    console.log({
+      name: event.target.name.value,
+      description: event.target.description.value,
+      ingredient: event.target.ingredient_1.value,
+      ingredient2: event.target.ingredient_2.value
+    });
   }
 
   render() {
