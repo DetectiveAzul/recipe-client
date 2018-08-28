@@ -1,8 +1,12 @@
 import React from 'react';
 
-const RecipeInfo = ({name, description}) => {
+const RecipeInfo = ({info}) => {
   return(
-    'Hello INFO'
+    <div className='recipe-info'>
+      <h4>Recipe Info</h4>
+      <p>{info.name}</p>
+      <p>{info.description}</p>
+    </div>
   );
 }
 export default RecipeInfo;

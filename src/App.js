@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import RecipesContainer from './_containers/RecipesContainer.js';
 import IndividualRecipe from './_containers/IndividualRecipe.js';
+import NavBar from './_components/NavBar.js';
 import { connect } from 'react-redux';
 import {
   fetchRecipes
@@ -17,10 +18,13 @@ class App extends Component{
   render(){
     const { recipes } = this.props
     return(
-      <Router>
-        <RecipesContainer path="/recipes/" recipes={recipes} />
-        <IndividualRecipe path="/recipes/*" />
-      </Router>
+      <div className='App'>
+        <NavBar />
+        <Router>
+          <RecipesContainer path="/recipes/" recipes={recipes} />
+          <IndividualRecipe path="/recipes/*" />
+        </Router>
+      </div>
     )
   }
 }

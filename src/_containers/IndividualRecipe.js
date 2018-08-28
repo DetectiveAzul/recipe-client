@@ -26,13 +26,19 @@ class IndividualRecipe extends Component {
   render() {
     return(
       <div className='recipeView'>
-        <RecipeInfo info={this.state.recipe.info} />
-        <RecipeIngredients
-          ingredients={this.state.recipe.ingredients}
-          quantities={this.state.recipe.quantities}
-          measurements={this.state.recipe.measurements}
-         />
-        <RecipeSteps steps={this.state.recipe.steps} />
+        {
+          (this.state.recipe) ?
+          <div className='recipeView'>
+            <RecipeInfo info={this.state.recipe.info} />
+            <RecipeIngredients
+              ingredients={this.state.recipe.ingredients}
+              quantities={this.state.recipe.quantities}
+              measurements={this.state.recipe.measurements}
+             />
+            <RecipeSteps steps={this.state.recipe.steps} />
+          </div>
+          : 'Loading'
+        }
       </div>
     );
   }
