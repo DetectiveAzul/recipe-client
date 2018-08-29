@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { trimAndCapitalise } from '../../_helpers/prettify'
 
 class RecipeForm extends Component {
   constructor(props) {
@@ -105,7 +106,7 @@ class RecipeForm extends Component {
 
   getInfo(event) {
     return {
-      name: event.target.name.value,
+      name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value
     }
   }
@@ -114,7 +115,7 @@ class RecipeForm extends Component {
     const ingredients = [];
     for (var i = 0; i < this.state.ingredientNumber; i++) {
       const newIngredient = {
-        ingredient: event.target[`ingredient-${i}`].value,
+        ingredient: trimAndCapitalise(event.target[`ingredient-${i}`].value),
         quantity: event.target[`quantity-${i}`].value,
         measurement: event.target[`measurement-${i}`].value,
       }
