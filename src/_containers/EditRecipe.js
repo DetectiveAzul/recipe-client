@@ -8,7 +8,7 @@ import ApiHelper from '../_helpers/ApiHelper.js'
 let EditRecipe = ({ dispatch }) => {
 
   const getRecipe = () => {
-
+    return ""
   }
 
   const editRecipe = (newbody, id) => {
