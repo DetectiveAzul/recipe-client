@@ -10,6 +10,8 @@ class RecipeForm extends Component {
 
     this.increaseIngredients = this.increaseIngredients.bind(this);
     this.increaseSteps = this.increaseSteps.bind(this);
+    this.decreaseIngredients = this.decreaseIngredients.bind(this);
+    this.decreaseSteps = this.decreaseSteps.bind(this);
     this.submitRecipe = this.submitRecipe.bind(this);
   };
 
@@ -17,6 +19,15 @@ class RecipeForm extends Component {
     event.preventDefault();
     let oldNumber = this.state.ingredientNumber;
     oldNumber ++;
+    this.setState({
+      ingredientNumber: oldNumber
+    });
+  };
+
+  decreaseIngredients(event) {
+    event.preventDefault();
+    let oldNumber = this.state.ingredientNumber;
+    if (oldNumber > 1) oldNumber --;
     this.setState({
       ingredientNumber: oldNumber
     });
@@ -31,19 +42,32 @@ class RecipeForm extends Component {
     });
   };
 
+  decreaseSteps(event) {
+    event.preventDefault();
+    let oldNumber = this.state.stepNumber;
+    if (oldNumber > 1) oldNumber --;
+    this.setState({
+      stepNumber: oldNumber
+    });
+  };
+
   renderIngredientInputField() {
     const ingredients = []
     for (var i = 0; i < this.state.ingredientNumber; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
           <label>{`Ingredient ${i+1}`}</label>
-          <input type='text' name={`ingredient-${i}`}/>
+          <input required type='text' name={`ingredient-${i}`}/>
           <label>Quantity</label>
-          <input type='number' name={`quantity-${i}`} />
+          <input required type='number' name={`quantity-${i}`} />
           <label>Unit of Measurement</label>
-          <input type='text' name={`measurement-${i}`} />
+          <input required type='text' name={`measurement-${i}`} />
            { (i === this.state.ingredientNumber -1) ?
-            <button onClick={this.increaseIngredients}>+</button> : "" }
+            <div className="control-buttons">
+              <button onClick={this.increaseIngredients}>+</button>
+              <button onClick={this.decreaseIngredients}>-</button>
+            </div>
+            : "" }
         </div>
       )
     };
@@ -56,9 +80,13 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`Step number ${i+1}`}</label>
-          <input type='text' name={`step-${i}`}/>
+          <input required type='text' name={`step-${i}`}/>
            { (i === this.state.stepNumber -1) ?
-            <button onClick={this.increaseSteps}>+</button> : "" }
+            <div className="control-buttons">
+              <button onClick={this.increaseSteps}>+</button>
+              <button onClick={this.decreaseSteps}>-</button>
+            </div>
+             : "" }
         </div>
       )
     };
@@ -114,10 +142,10 @@ class RecipeForm extends Component {
           <form className='form' onSubmit={this.submitRecipe}>
             <h4>Info</h4>
             <label>Recipe Name</label>
-            <input type='text' name='name'/>
+            <input required type='text' name='name'/>
             <br />
             <label>Description</label>
-            <input type='text' name='description'/>
+            <input required type='text' name='description'/>
             <div className='ingredient-form-section'>
               <h4>Ingredients</h4>
               { this.renderIngredientInputField() }
