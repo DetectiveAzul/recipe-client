@@ -4,7 +4,7 @@ import RecipeSmall from '../_components/RecipeSmall.js';
 export default class RecipesContainer extends Component {
 
   render(){
-    if(!this.props.recipes){
+    if(this.props.recipes === [] || !this.props.recipes ){
       return (
         <h1>
         No recipes in database
