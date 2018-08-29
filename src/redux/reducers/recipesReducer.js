@@ -1,7 +1,8 @@
 import {
   REQUEST_RECIPES,
   RECEIVE_RECIPES,
-  DELETE_RECIPE_SUCCESS
+  DELETE_RECIPE_SUCCESS,
+  ADD_RECIPE_SUCCESS
 } from '../actions/index'
 
 const initialState = { isFetching: false, recipes: []}
@@ -18,13 +19,19 @@ const recipesReducer = (state = initialState, action) => {
         recipes: action.recipes,
         lastUpdated: action.receivedAt
       })
+    case ADD_RECIPE_SUCCESS:
+      console.log(action);
+      const newRecipes = [...state.recipes, action.recipe]
+      return Object.assign({}, state, {
+        recipes: newRecipes
+      })
     case DELETE_RECIPE_SUCCESS:
-    console.log(action);
-    const newState = state.recipes.filter(recipe =>
-     recipe.id !== action.id)
-    return  Object.assign({}, state, {
-      recipes: newState
-    })
+      console.log(action);
+      const newState = state.recipes.filter(recipe =>
+       recipe.id !== action.id)
+      return  Object.assign({}, state, {
+        recipes: newState
+      })
     default:
       return state
   }

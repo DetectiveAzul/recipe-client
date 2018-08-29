@@ -3,15 +3,19 @@ import ApiHelper from '../../_helpers/ApiHelper'
 
 const ROOT_URL = 'http://localhost:3001/api';
 
+//CONSTANTS
 export const REQUEST_RECIPES = "REQUEST_RECIPES";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const ADD_RECIPE = 'ADD_RECIPE';
+export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_NONE: 'SHOW_NONE'
 };
 
+
+//ACTIONS
 export function requestRecipes() {
   return{
     type: REQUEST_RECIPES
@@ -34,6 +38,25 @@ export function fetchRecipes() {
       .then(json => dispatch(receiveRecipes(json)))
   }
 }
+
+export function addRecipe(recipe) {
+  console.log('add called');
+  const api = new ApiHelper('/recipes/full')
+    return dispatch => {
+      api.post(recipe)
+        .then((res) => {
+          dispatch(addRecipeSuccess(recipe, res.new_entry.id))
+        })
+    }
+}
+
+export function addRecipeSuccess(recipe, id) {
+  return{
+    type: ADD_RECIPE_SUCCESS,
+    recipe: { id: id, name: recipe.info.name, description: recipe.info.description }
+  }
+}
+
 
 export function deleteRecipeSuccess(id) {
   return{
