@@ -1,16 +1,16 @@
 import fetch from 'cross-fetch';
+import ApiHelper from '../../_helpers/ApiHelper'
 
 const ROOT_URL = 'http://localhost:3001/api';
 
 export const REQUEST_RECIPES = "REQUEST_RECIPES";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const ADD_RECIPE = 'ADD_RECIPE';
-export const REMOVE_RECIPE = 'REMOVE_RECIPE';
+export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_NONE: 'SHOW_NONE'
 };
-
 
 export function requestRecipes() {
   return{
@@ -32,6 +32,24 @@ export function fetchRecipes() {
     return fetch(`${ROOT_URL}/recipes`)
       .then(response => response.json())
       .then(json => dispatch(receiveRecipes(json)))
+  }
+}
+
+export function deleteRecipeSuccess(id) {
+  return{
+    type: DELETE_RECIPE_SUCCESS,
+    id
+  }
+}
+
+export function deleteRecipe(id){
+  console.log('delete called');
+  const api = new ApiHelper('/recipes')
+    return dispatch => {
+      api.delete(id)
+      .then(() => {
+        dispatch(deleteRecipeSuccess(id))
+    })
   }
 }
 
