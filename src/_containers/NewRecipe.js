@@ -6,20 +6,19 @@ import RecipeForm from '../_components/RecipeNew/RecipeForm.js';
 
 let AddRecipe = ({ dispatch }) => {
 
-  const addRecipe = (event) => {
-    event.preventDefault();
+  const addRecipe = (recipe) => {
     // dispatch(addRecipe(
     //   {
     //     name: event.target.name.value,
     //     description: event.target.description.value
     //   }
     // ));
-    console.log('Added Recipe!')
+    console.log('Added Recipe!', recipe)
     // navigate()
   };
 
   return(
-    <RecipeForm />
+    <RecipeForm addRecipe={addRecipe} />
   )
 
 };
