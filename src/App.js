@@ -5,6 +5,7 @@ import IndividualRecipe from './_containers/IndividualRecipe.js';
 import Home from './_containers/Home.js';
 import NotFound from './_containers/NotFound.js';
 import NewRecipe from './_containers/NewRecipe.js';
+import EditRecipe from './_containers/EditRecipe.js';
 import NavBar from './_components/NavBar.js';
 import { connect } from 'react-redux';
 import {
@@ -39,8 +40,9 @@ class App extends Component{
           <Home path="/" />
           <RecipesContainer path="/recipes/" recipes={recipes}  />
           <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
+          <EditRecipe path="/recipes/:id/edit" />
           <NewRecipe path="/recipes/new" />
-          <NotFound default />
+          <NoFound default />
         </Router>
       </div>
     )

@@ -9,7 +9,6 @@ import RecipeIngredients from '../_components/RecipeView/RecipeIngredients.js'
 import RecipeSteps from '../_components/RecipeView/RecipeSteps.js'
 import { Button } from '../_components/styles/ComponentStyle.js';
 import { navigate } from '@reach/router';
-import NotFound from './NotFound';
 
 class IndividualRecipe extends Component {
   constructor(props) {
