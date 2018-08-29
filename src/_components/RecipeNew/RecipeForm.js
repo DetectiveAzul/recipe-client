@@ -145,7 +145,7 @@ class RecipeForm extends Component {
             <input required type='text' name='name'/>
             <br />
             <label>Description</label>
-            <input required type='text' name='description'/>
+            <input type='text' name='description'/>
             <div className='ingredient-form-section'>
               <h4>Ingredients</h4>
               { this.renderIngredientInputField() }
