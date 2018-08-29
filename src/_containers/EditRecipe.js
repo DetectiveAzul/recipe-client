@@ -3,16 +3,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { updateRecipe } from '../redux/actions/index.js';
 import RecipeForm from '../_components/RecipeEdit/RecipeForm.js';
+import ApiHelper from '../_helpers/ApiHelper.js'
 
 let EditRecipe = ({ dispatch }) => {
 
-  // const editRecipe = (newbody, id) => {
-    // dispatch(updateRecipe(newBody, id));
-    // navigate(`recipes/${id}`)
-  // };
+  const getRecipe = () => {
+
+  }
+
+  const editRecipe = (newbody, id) => {
+
+
+  }
 
   return(
-    <RecipeForm />
+    <RecipeForm
+      recipe = {getRecipe()}
+      editRecipe = {editRecipe}
+    />
   )
 
 };
