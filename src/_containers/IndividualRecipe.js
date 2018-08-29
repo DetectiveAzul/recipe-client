@@ -34,7 +34,6 @@ class IndividualRecipe extends Component {
   };
 
   render() {
-    console.log(this.state.recipe);
     return(
       <div className='recipeView'>
         {
