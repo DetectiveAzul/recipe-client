@@ -4,7 +4,7 @@ import {
   DELETE_RECIPE_SUCCESS
 } from '../actions/index'
 
-const initialState = { isFetching: false, recipes: [],}
+const initialState = { isFetching: false, recipes: []}
 
 const recipesReducer = (state = initialState, action) => {
   switch(action.type){
@@ -19,12 +19,12 @@ const recipesReducer = (state = initialState, action) => {
         lastUpdated: action.receivedAt
       })
     case DELETE_RECIPE_SUCCESS:
-      const newState = Object.assign({}, state);
-      const indexOfRecipeToDelete = state.findIndex(recipe => {
-        return recipe.id === action.recipe.id
-      })
-      newState.splice(indexOfRecipeToDelete, 1);
-      return newState
+    console.log(action);
+    const newState = state.recipes.filter(recipe =>
+     recipe.id !== action.id)
+    return  Object.assign({}, state, {
+      recipes: newState
+    })
     default:
       return state
   }
