@@ -7,17 +7,12 @@ import ApiHelper from '../_helpers/ApiHelper.js'
 
 let EditRecipe = ({ dispatch }) => {
 
-  const getRecipe = () => {
-    return ""
-  }
-
   const editRecipe = (newbody, id) => {
     //This will dispatch the action to redux
   }
 
   return(
     <RecipeForm
-      recipe = {getRecipe()}
       editRecipe = {editRecipe}
     />
   )
