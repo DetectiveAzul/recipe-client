@@ -40,7 +40,6 @@ export function fetchRecipes() {
 }
 
 export function addRecipe(recipe) {
-  console.log('add called');
   const api = new ApiHelper('/recipes/full')
     return dispatch => {
       api.post(recipe)
@@ -66,7 +65,6 @@ export function deleteRecipeSuccess(id) {
 }
 
 export function deleteRecipe(id){
-  console.log('delete called');
   const api = new ApiHelper('/recipes')
     return dispatch => {
       api.delete(id)

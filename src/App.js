@@ -35,9 +35,9 @@ class App extends Component{
       <div className='App'>
         <NavBar />
         <Router>
-          <RecipesContainer path="/recipes/" recipes={recipes} deleteRecipe={this.deleteRecipe} />
-          <IndividualRecipe path="/recipes/:id" />
-          <EditRecipe path="/recipes/:id/edit"/>
+          <RecipesContainer path="/recipes/" recipes={recipes}  />
+          <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
+          <EditRecipe path="/recipes/:id/edit" />
           <NewRecipe path="/recipes/new" />
           {/* <NoFound default /> */}
         </Router>
