@@ -7,6 +7,8 @@ import config from '../_helpers/config.js';
 import RecipeInfo from '../_components/RecipeView/RecipeInfo.js'
 import RecipeIngredients from '../_components/RecipeView/RecipeIngredients.js'
 import RecipeSteps from '../_components/RecipeView/RecipeSteps.js'
+import { Button } from '../_components/styles/ComponentStyle.js';
+import { navigate } from '@reach/router';
 
 class IndividualRecipe extends Component {
   constructor(props) {
@@ -14,6 +16,12 @@ class IndividualRecipe extends Component {
     this.state = {
       recipe: undefined
     };
+    this.handleDeleteClicked = this.handleDeleteClicked.bind(this)
+  };
+
+   handleDeleteClicked = (recipe) => {
+    this.props.deleteRecipe(`${this.state.recipe.info.id}`);
+    navigate('/recipes')
   };
 
   componentDidMount() {
@@ -26,6 +34,7 @@ class IndividualRecipe extends Component {
   };
 
   render() {
+    console.log(this.state.recipe);
     return(
       <div className='recipeView'>
         {
@@ -38,6 +47,7 @@ class IndividualRecipe extends Component {
               measurements={this.state.recipe.measurements}
              />
             <RecipeSteps steps={this.state.recipe.steps} />
+            <Button onClick={this.handleDeleteClicked}>Delete</Button>
           </div>
           : 'Loading'
         }

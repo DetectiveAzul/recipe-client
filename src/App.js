@@ -34,8 +34,8 @@ class App extends Component{
       <div className='App'>
         <NavBar />
         <Router>
-          <RecipesContainer path="/recipes/" recipes={recipes} deleteRecipe={this.deleteRecipe} />
-          <IndividualRecipe path="/recipes/:id" />
+          <RecipesContainer path="/recipes/" recipes={recipes}  />
+          <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
           <NewRecipe path="/recipes/new" />
         </Router>
       </div>

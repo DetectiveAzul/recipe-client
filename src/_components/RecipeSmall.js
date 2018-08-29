@@ -13,7 +13,6 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
         <h3>{recipe.name}</h3>
         <p>{recipe.description}</p>
       </InfoWrapper>
-      <Button onClick={() => deleteRecipe(`${recipe.id}`)}>Delete</Button>
     </RecipeWrapper>
   );
 };
