@@ -10,6 +10,7 @@ class RecipeForm extends Component {
 
     this.increaseIngredients = this.increaseIngredients.bind(this);
     this.increaseSteps = this.increaseSteps.bind(this);
+    this.submitRecipe = this.submitRecipe.bind(this);
   };
 
   increaseIngredients(event) {
@@ -36,11 +37,11 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='ingredient-field'>
           <label>{`Ingredient ${i+1}`}</label>
-          <input type='text' name={`ingredient_${i}`}/>
+          <input type='text' name={`ingredient-${i}`}/>
           <label>Quantity</label>
-          <input type='number' name={`quantity_${i}`} />
+          <input type='number' name={`quantity-${i}`} />
           <label>Unit of Measurement</label>
-          <input type='text' name={`measurement_${i}`} />
+          <input type='text' name={`measurement-${i}`} />
            { (i === this.state.ingredientNumber -1) ?
             <button onClick={this.increaseIngredients}>+</button> : "" }
         </div>
@@ -55,7 +56,7 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`Step number ${i+1}`}</label>
-          <input type='text' name='step'/>
+          <input type='text' name={`step-${i}`}/>
            { (i === this.state.stepNumber -1) ?
             <button onClick={this.increaseSteps}>+</button> : "" }
         </div>
@@ -66,13 +67,44 @@ class RecipeForm extends Component {
 
   submitRecipe(event) {
     event.preventDefault();
-    console.log('Submitting Recipe');
-    console.log({
+    const recipe = {
+      info: this.getInfo(event),
+      ingredients: this.getIngredients(event),
+      steps: this.getSteps(event)
+    }
+    console.log(recipe);
+  }
+
+  getInfo(event) {
+    return {
       name: event.target.name.value,
-      description: event.target.description.value,
-      ingredient: event.target.ingredient_1.value,
-      ingredient2: event.target.ingredient_2.value
-    });
+      description: event.target.description.value
+    }
+  }
+
+  getIngredients(event) {
+    const ingredients = [];
+    for (var i = 0; i < this.state.ingredientNumber; i++) {
+      const newIngredient = {
+        ingredient: event.target[`ingredient-${i}`].value,
+        quantity: event.target[`quantity-${i}`].value,
+        measurement: event.target[`measurement-${i}`].value,
+      }
+      ingredients.push(newIngredient);
+    }
+    return ingredients;
+  }
+
+  getSteps(event) {
+    const steps = [];
+    for (var i = 0; i < this.state.stepNumber; i++) {
+      const newStep = {
+        stepNumber: i+1,
+        stepDescription: event.target[`step-${i}`].value
+      }
+      steps.push(newStep);
+    }
+    return steps;
   }
 
   render() {
