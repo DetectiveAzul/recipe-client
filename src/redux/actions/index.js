@@ -43,7 +43,8 @@ export function deleteRecipeSuccess(id) {
 }
 
 export function deleteRecipe(id){
-  const api = new ApiHelper('recipes')
+  console.log('delete called');
+  const api = new ApiHelper('/recipes')
     return dispatch => {
       api.delete(id)
       .then(() => {
