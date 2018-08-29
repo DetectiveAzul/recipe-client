@@ -20,8 +20,8 @@ const recipesReducer = (state = initialState, action) => {
       })
     case DELETE_RECIPE_SUCCESS:
       const newState = Object.assign({}, state);
-      const indexOfRecipeToDelete = state.findIndex(id => {
-        return id === action.id
+      const indexOfRecipeToDelete = state.findIndex(recipe => {
+        return recipe.id === action.recipe.id
       })
       newState.splice(indexOfRecipeToDelete, 1);
       return newState
