@@ -12,8 +12,7 @@ let EditRecipe = ({ dispatch }) => {
   }
 
   const editRecipe = (newbody, id) => {
-
-
+    //This will dispatch the action to redux
   }
 
   return(
