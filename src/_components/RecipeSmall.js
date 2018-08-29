@@ -1,5 +1,5 @@
 import React from 'react';
-import {RecipeWrapper, InfoWrapper, Button } from './styles/ComponentStyle.js';
+import {RecipeWrapper, InfoWrapper} from './styles/ComponentStyle.js';
 import { navigate } from '@reach/router';
 
 

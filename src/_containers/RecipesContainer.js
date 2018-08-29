@@ -17,7 +17,6 @@ export default class RecipesContainer extends Component {
             return(<RecipeSmall
               key={index}
               recipe={recipe}
-              deleteRecipe={this.props.deleteRecipe}
               />)
         })
       }
