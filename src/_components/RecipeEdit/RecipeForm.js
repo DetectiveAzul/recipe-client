@@ -30,7 +30,7 @@ class RecipeForm extends Component {
   }
 
   renderDescriptionField() {
-    return <input readOnly type='text' name='description' defaultValue={`${this.state.info.description}`} />
+    return <input type='text' name='description' defaultValue={`${this.state.info.description}`} />
   }
 
   renderIngredientInputField() {
@@ -78,7 +78,7 @@ class RecipeForm extends Component {
             { (this.state.info)? this.renderStepInputField():"" }
           </div>
 
-          <input type='submit' value='Add Recipe' />
+          <input type='submit' value='Update Recipe' />
 
         </form>
       </fieldset>
