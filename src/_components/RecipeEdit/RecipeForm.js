@@ -26,11 +26,33 @@ class RecipeForm extends Component {
   };
 
   renderNameField() {
-    return <input required type='text' name='name' value={`${this.state.info.name}`} />
+    return <input required type='text' name='name' defaultValue={`${this.state.info.name}`} />
   }
 
   renderDescriptionField() {
-    return <input type='text' name='description' value={`${this.state.info.description}`} />
+    return <input readOnly type='text' name='description' defaultValue={`${this.state.info.description}`} />
+  }
+
+  renderIngredientInputField() {
+    return this.state.ingredients.map((ingredient, index) => {
+      return <div key={index} className='ingredient-field'>
+        <label>{`Ingredient ${index+1}`}</label>
+        <input required readOnly type='text' name={`ingredient-${index}`} defaultValue={`${ingredient.name}`}/>
+        <label>Quantity</label>
+        <input required readOnly type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredientquantity}`} />
+        <label>Unit of Measurement</label>
+        <input required readOnly type='text' name={`measurement-${index}`} defaultValue={`${this.state.measurements[index].name}`}  />
+      </div>
+    })
+  }
+
+  renderStepInputField() {
+    return this.state.steps.map((step, index) => {
+      return <div key={index} className='ingredient-field'>
+        <label>{`Step ${index+1}`}</label>
+        <input required readOnly type='text' name={`step-${index}`} defaultValue={`${step.stepdescription}`}/>
+      </div>
+    })
   }
 
   render() {
@@ -41,19 +63,19 @@ class RecipeForm extends Component {
 
           <h4>Info</h4>
           <label>Recipe Name</label>
-            { (this.state.info)?this.renderNameField():""}
+            { (this.state.info)? this.renderNameField():""}
           <br />
 
           <label>Description</label>
-            { (this.state.info)?this.renderDescriptionField():""}
+            { (this.state.info)? this.renderDescriptionField():""}
           <div className='ingredient-form-section'>
             <h4>Ingredients</h4>
-              {  }
+            { (this.state.info)? this.renderIngredientInputField():"" }
           </div>
 
           <div className='steps-form-section'>
             <h4>Steps</h4>
-            {  }
+            { (this.state.info)? this.renderStepInputField():"" }
           </div>
 
           <input type='submit' value='Add Recipe' />
