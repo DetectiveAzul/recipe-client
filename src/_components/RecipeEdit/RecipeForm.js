@@ -9,6 +9,7 @@ class RecipeForm extends Component {
     this.state = {
       id: props.id
     };
+    this.handleUpdate = this.handleUpdate.bind(this);
   };
 
   componentWillMount() {
@@ -55,11 +56,71 @@ class RecipeForm extends Component {
     })
   }
 
+  handleUpdate(event) {
+    event.preventDefault();
+    console.log('Updating recipe');
+    const newRecipe = ({
+      info: this.getInfo(event),
+      ingredients: this.getIngredients(event),
+      quantities: this.getQuantities(event),
+      measurement: this.getMeasurements(event),
+      steps: this.getSteps(event)
+    });
+    console.log('New Updated Info: ', newRecipe);
+  };
+
+  getInfo(event) {
+    return {
+      id: this.state.id,
+      name: event.target.name.value,
+      description: event.target.name.value
+    };
+  };
+
+  getIngredients(event) {
+    return this.state.ingredients.map((ingredient, index) => {
+      return {
+        id: ingredient.id,
+        name: event.target[`description-${index}`].value
+      };
+    });
+  };
+
+  getMeasurements(event) {
+    return this.state.measurements.map((measurement, index) => {
+      return {
+        id: measurement.id,
+        name: event.target[`measurement-${index}`].value
+      };
+    });
+  };
+
+  getQuantities(event) {
+    return this.state.quantities.map((quantity, index) => {
+      return {
+        id: quantity.id,
+        recipeId: this.state.id,
+        ingredientQuantity: event.target[`measurement-${index}`].value,
+        ingredientId: this.state.ingredients[index].id,
+        measurementId: this.state.measurements[index].id
+      };
+    });
+  };
+
+  getSteps(event) {
+    return this.state.steps.map((step, index) => {
+      return {
+        id: step.id,
+        name: event.target[`measurement-${index}`].value
+      };
+    });
+  };
+
   render() {
     return(
       <fieldset>
         <legend>Edit Recipe ID {`${this.state.id}`}</legend>
-        <form className='form'>
+        <form className='form' onSubmit={this.handleUpdate}>
 
           <h4>Info</h4>
           <label>Recipe Name</label>
