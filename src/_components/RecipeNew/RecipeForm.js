@@ -90,7 +90,7 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`Step number ${i+1}`}</label>
-          <input required type='text' name={`step-${i}`}/>
+          <textarea required type='text' name={`step-${i}`}/>
            { (i === this.state.stepNumber -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseSteps}>+</button>
