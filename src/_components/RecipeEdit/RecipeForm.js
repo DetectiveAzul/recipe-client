@@ -58,7 +58,6 @@ class RecipeForm extends Component {
 
   handleUpdate(event) {
     event.preventDefault();
-    console.log('Updating recipe');
     const newRecipe = ({
       info: this.getInfo(event),
       ingredients: this.getIngredients(event),
@@ -66,7 +65,7 @@ class RecipeForm extends Component {
       measurement: this.getMeasurements(event),
       steps: this.getSteps(event)
     });
-    console.log('New Updated Info: ', newRecipe);
+    this.props.editRecipe(newRecipe);
   };
 
   getInfo(event) {
