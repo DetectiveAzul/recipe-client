@@ -65,14 +65,14 @@ class RecipeForm extends Component {
       measurement: this.getMeasurements(event),
       steps: this.getSteps(event)
     });
-    this.props.editRecipe(newRecipe);
+    console.dir(newRecipe);
   };
 
   getInfo(event) {
     return {
       id: this.state.id,
       name: event.target.name.value,
-      description: event.target.name.value
+      description: event.target.description.value
     };
   };
 
@@ -80,7 +80,7 @@ class RecipeForm extends Component {
     return this.state.ingredients.map((ingredient, index) => {
       return {
         id: ingredient.id,
-        name: event.target[`description-${index}`].value
+        name: event.target[`ingredient-${index}`].value
       };
     });
   };
@@ -99,7 +99,7 @@ class RecipeForm extends Component {
       return {
         id: quantity.id,
         recipeId: this.state.id,
-        ingredientQuantity: event.target[`measurement-${index}`].value,
+        ingredientQuantity: event.target[`quantity-${index}`].value,
         ingredientId: this.state.ingredients[index].id,
         measurementId: this.state.measurements[index].id
       };
@@ -110,7 +110,8 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return {
         id: step.id,
-        name: event.target[`measurement-${index}`].value
+        stepNumber: index,
+        stepDescription: event.target[`step-${index}`].value
       };
     });
   };
