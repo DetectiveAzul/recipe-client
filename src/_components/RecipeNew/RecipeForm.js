@@ -114,7 +114,6 @@ class RecipeForm extends Component {
   }
 
   getInfo(event) {
-    console.log(event.target);
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
