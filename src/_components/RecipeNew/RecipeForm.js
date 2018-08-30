@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { trimAndCapitalise } from '../../_helpers/prettify'
+import units from '../../data/units'
 
 class RecipeForm extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class RecipeForm extends Component {
     this.decreaseIngredients = this.decreaseIngredients.bind(this);
     this.decreaseSteps = this.decreaseSteps.bind(this);
     this.submitRecipe = this.submitRecipe.bind(this);
+    this.createSelectItems = this.createSelectItems.bind(this);
   };
 
   increaseIngredients(event) {
@@ -24,6 +26,11 @@ class RecipeForm extends Component {
       ingredientNumber: oldNumber
     });
   };
+
+  createSelectItems(data){
+    const newData = data.map((item, i) => <option key={i} value={item}>{item}</option>)
+    return newData
+  }
 
   decreaseIngredients(event) {
     event.preventDefault();
@@ -62,7 +69,9 @@ class RecipeForm extends Component {
           <label>Quantity</label>
           <input required type='number' name={`quantity-${i}`} />
           <label>Unit of Measurement</label>
-          <input required type='text' name={`measurement-${i}`} />
+          <select  name={`measurement-${i}`}>
+            {this.createSelectItems(units)}
+          </select>
            { (i === this.state.ingredientNumber -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseIngredients}>+</button>
