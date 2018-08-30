@@ -8,7 +8,7 @@ let EditRecipe = (props) => {
 
   const editRecipe = (newBody, id) => {
     props.dispatch(updateRecipe(newBody, id));
-    //This will dispatch the action to redux
+    navigate(`/recipes/`);
   }
 
   return(

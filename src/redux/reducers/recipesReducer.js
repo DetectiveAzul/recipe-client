@@ -27,11 +27,11 @@ const recipesReducer = (state = initialState, action) => {
         recipes: newRecipes
       })
     case UPDATE_RECIPE_SUCCESS:
-      const oldState = state.recipes.filter(recipe =>
-        recipe.id !== action.id)
-      const withNewRecipe = [...oldState, action.recipe];
+      let updatedState = state.recipes.filter(recipe =>
+       recipe.id !== action.recipe.id)
+       updatedState = [...updatedState, action.recipe]
       return Object.assign({}, state, {
-        recipes: withNewRecipe
+        recipes: updatedState
       })
     case DELETE_RECIPE_SUCCESS:
       const newState = state.recipes.filter(recipe =>
