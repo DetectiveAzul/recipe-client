@@ -43,10 +43,10 @@ class ApiHelper {
     }
   };
 
-  async put(id, payload) {
+  async put(payload) {
     try {
-      const response = await fetch(`${this.url}/${id}`, {
-        method: 'POST',
+      const response = await fetch(this.url, {
+        method: 'PUT',
         body: JSON.stringify(payload),
         headers: {'Content-Type': 'application/json' }
       });

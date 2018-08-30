@@ -62,10 +62,10 @@ class RecipeForm extends Component {
       info: this.getInfo(event),
       ingredients: this.getIngredients(event),
       quantities: this.getQuantities(event),
-      measurement: this.getMeasurements(event),
+      measurements: this.getMeasurements(event),
       steps: this.getSteps(event)
     });
-    console.dir(newRecipe);
+    this.props.editRecipe(newRecipe, this.state.id);
   };
 
   getInfo(event) {
