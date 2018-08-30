@@ -8,6 +8,8 @@ export const REQUEST_RECIPES = "REQUEST_RECIPES";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const ADD_RECIPE = 'ADD_RECIPE';
 export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
+export const UPDATE_RECIPE = 'UPDATE_RECIPE';
+export const UPDATE_RECIPE_SUCCESS = 'UPDATE_RECIPE_SUCCESS';
 export const DELETE_RECIPE_SUCCESS = 'DELETE_RECIPE_SUCCESS';
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -52,6 +54,23 @@ export function addRecipe(recipe) {
 export function addRecipeSuccess(recipe, id) {
   return{
     type: ADD_RECIPE_SUCCESS,
+    recipe: { id: id, name: recipe.info.name, description: recipe.info.description }
+  }
+}
+
+export function updateRecipe(recipe, id) {
+  const api = new ApiHelper(`/recipes/${id}/full`);
+    return dispatch => {
+      api.put(recipe)
+        .then((res) => {
+          dispatch(updateRecipeSuccess(recipe, id))
+        })
+    }
+}
+
+export function updateRecipeSuccess(recipe, id) {
+  return{
+    type: UPDATE_RECIPE_SUCCESS,
     recipe: { id: id, name: recipe.info.name, description: recipe.info.description }
   }
 }
