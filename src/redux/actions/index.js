@@ -76,7 +76,12 @@ export function updateRecipe(recipe, id) {
 export function updateRecipeSuccess(recipe, id) {
   return{
     type: UPDATE_RECIPE_SUCCESS,
-    recipe: { id: id, name: recipe.info.name, description: recipe.info.description }
+    recipe: { id: id,
+      name: recipe.info.name,
+      description: recipe.info.description,
+      preptime: recipe.info.preptime,
+      cooktime: recipe.info.cooktime
+     }
   }
 }
 

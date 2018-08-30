@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import fetch from 'cross-fetch';
 import config from '../../_helpers/config.js';
-
+import {trimAndCapitalise} from '../../_helpers/prettify'
 
 class RecipeForm extends Component {
   constructor(props) {
@@ -32,6 +32,17 @@ class RecipeForm extends Component {
 
   renderDescriptionField() {
     return <input type='text' name='description' defaultValue={`${this.state.info.description}`} />
+  }
+
+  renderTimeFields(){
+    return (
+      <div>
+        <input type='time' name="preptime" defaultValue={`${this.state.info.preptime}`} />
+        <br />
+        <label>Cook time: </label>
+        <input type='time' name="cooktime" defaultValue={`${this.state.info.cooktime}`} />
+      </div>
+    )
   }
 
   renderIngredientInputField() {
@@ -69,12 +80,14 @@ class RecipeForm extends Component {
   };
 
   getInfo(event) {
+    console.log(event.target.cooktime.value);
     return {
-      id: this.state.id,
-      name: event.target.name.value,
-      description: event.target.description.value
-    };
-  };
+      name: trimAndCapitalise(event.target.name.value),
+      description: event.target.description.value,
+      preptime: event.target.preptime.value,
+      cooktime: event.target.cooktime.value
+    }
+  }
 
   getIngredients(event) {
     return this.state.ingredients.map((ingredient, index) => {
@@ -129,6 +142,11 @@ class RecipeForm extends Component {
 
           <label>Description</label>
             { (this.state.info)? this.renderDescriptionField():""}
+          <br />
+
+          <label>Prep time: </label>
+            { (this.state.info)? this.renderTimeFields():""}
+
           <div className='ingredient-form-section'>
             <h4>Ingredients</h4>
             { (this.state.info)? this.renderIngredientInputField():"" }
