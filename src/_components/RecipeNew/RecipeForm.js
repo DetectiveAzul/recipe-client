@@ -64,14 +64,14 @@ class RecipeForm extends Component {
     for (var i = 0; i < this.state.ingredientNumber; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
-          <label>{`Ingredient ${i+1}`}</label>
-          <input required type='text' name={`ingredient-${i}`}/>
-          <label>Quantity</label>
-          <input required type='number' name={`quantity-${i}`} />
-          <label>Unit of Measurement</label>
+          <label>Amount</label>
+          <input required type="number" name={`quantity-${i}`} step="any" />
+          <label>Units</label>
           <select  name={`measurement-${i}`}>
             {this.createSelectItems(units)}
           </select>
+          <label>{`Ingredient ${i+1}`}</label>
+          <input required type='text' name={`ingredient-${i}`}/>
            { (i === this.state.ingredientNumber -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseIngredients}>+</button>
