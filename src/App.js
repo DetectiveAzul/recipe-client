@@ -42,7 +42,7 @@ class App extends Component{
           <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
           <EditRecipe path="/recipes/:id/edit" />
           <NewRecipe path="/recipes/new" />
-          <NoFound default />
+          <NotFound default />
         </Router>
       </div>
     )
