@@ -52,7 +52,12 @@ export function addRecipe(recipe) {
 export function addRecipeSuccess(recipe, id) {
   return{
     type: ADD_RECIPE_SUCCESS,
-    recipe: { id: id, name: recipe.info.name, description: recipe.info.description }
+    recipe: { id: id,
+      name: recipe.info.name,
+      description: recipe.info.description,
+      preptime: recipe.info.preptime,
+      cooktime: recipe.info.cooktime
+    }
   }
 }
 

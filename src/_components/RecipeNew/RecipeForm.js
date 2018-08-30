@@ -114,9 +114,12 @@ class RecipeForm extends Component {
   }
 
   getInfo(event) {
+    console.log(event.target);
     return {
       name: trimAndCapitalise(event.target.name.value),
-      description: event.target.description.value
+      description: event.target.description.value,
+      preptime: event.target.preptime.value,
+      cooktime: event.target.cooktime.value
     }
   }
 
@@ -156,6 +159,12 @@ class RecipeForm extends Component {
             <br />
             <label>Description</label>
             <input type='text' name='description'/>
+            <br />
+            <label>Prep time: </label>
+            <input type='time' name="preptime" />
+            <br />
+            <label>Cook time: </label>
+            <input type='time' name="cooktime" />
             <div className='ingredient-form-section'>
               <h4>Ingredients</h4>
               { this.renderIngredientInputField() }
