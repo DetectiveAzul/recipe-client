@@ -24,6 +24,10 @@ class IndividualRecipe extends Component {
     navigate('/recipes')
   };
 
+  handleEditClicked = () => {
+    navigate(`/recipes/${this.state.recipe.info.id}/edit`);
+    }
+
   componentDidMount() {
     return fetch(`${config.apiUrl}/recipes/${this.props.id}`)
       .then(response => response.json())
@@ -46,6 +50,7 @@ class IndividualRecipe extends Component {
               measurements={this.state.recipe.measurements}
              />
             <RecipeSteps steps={this.state.recipe.steps} />
+            <Button onClick={this.handleEditClicked}>Edit</Button>
             <Button onClick={this.handleDeleteClicked}>Delete</Button>
           </div>
           : 'Recipe not found'
