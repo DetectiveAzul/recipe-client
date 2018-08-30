@@ -64,14 +64,14 @@ class RecipeForm extends Component {
     for (var i = 0; i < this.state.ingredientNumber; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
-          <label>{`Ingredient ${i+1}`}</label>
-          <input required type='text' name={`ingredient-${i}`}/>
-          <label>Quantity</label>
-          <input required type='number' name={`quantity-${i}`} />
-          <label>Unit of Measurement</label>
+          <label>Amount</label>
+          <input required type="number" name={`quantity-${i}`} step="any" />
+          <label>Units</label>
           <select  name={`measurement-${i}`}>
             {this.createSelectItems(units)}
           </select>
+          <label>{`Ingredient ${i+1}`}</label>
+          <input required type='text' name={`ingredient-${i}`}/>
            { (i === this.state.ingredientNumber -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseIngredients}>+</button>
@@ -90,7 +90,7 @@ class RecipeForm extends Component {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`Step number ${i+1}`}</label>
-          <input required type='text' name={`step-${i}`}/>
+          <textarea required type='text' name={`step-${i}`}/>
            { (i === this.state.stepNumber -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseSteps}>+</button>
@@ -116,7 +116,9 @@ class RecipeForm extends Component {
   getInfo(event) {
     return {
       name: trimAndCapitalise(event.target.name.value),
-      description: event.target.description.value
+      description: event.target.description.value,
+      preptime: event.target.preptime.value,
+      cooktime: event.target.cooktime.value
     }
   }
 
@@ -156,6 +158,12 @@ class RecipeForm extends Component {
             <br />
             <label>Description</label>
             <input type='text' name='description'/>
+            <br />
+            <label>Prep time: </label>
+            <input type='time' name="preptime" />
+            <br />
+            <label>Cook time: </label>
+            <input type='time' name="cooktime" />
             <div className='ingredient-form-section'>
               <h4>Ingredients</h4>
               { this.renderIngredientInputField() }
