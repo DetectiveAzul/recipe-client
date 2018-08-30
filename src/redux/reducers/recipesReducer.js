@@ -20,7 +20,8 @@ const recipesReducer = (state = initialState, action) => {
         lastUpdated: action.receivedAt
       })
     case ADD_RECIPE_SUCCESS:
-      const newRecipes = [...state.recipes, action.recipe]
+      let newRecipes = [action.recipe];
+      if (state.recipes) newRecipes = [...state.recipes, action.recipe];
       return Object.assign({}, state, {
         recipes: newRecipes
       })
