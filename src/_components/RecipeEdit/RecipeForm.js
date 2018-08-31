@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import fetch from 'cross-fetch';
 import config from '../../_helpers/config.js';
-import {trimAndCapitalise} from '../../_helpers/prettify'
+import {trimAndCapitalise} from '../../_helpers/prettify.js'
+import units from '../../data/units.js'
+
+import {
+  FormWrapper, LeftPart, RightPart, StepsPart, TimesField, Box,
+  DescriptionArea, NameField, StepArea, StepTitle, StepHeading,
+  StepFieldList, IngredientInput, IngredientFieldList, SubmitButton
+} from './styles/FormStyle.js';
+
 
 class RecipeForm extends Component {
   constructor(props) {
@@ -25,35 +33,43 @@ class RecipeForm extends Component {
           })
       });
   };
+  createSelectItems(data){
+    const newData = data.map((item, index) => <option key={index} value={item}>{item}</option>)
+    return newData
+  }
 
   renderNameField() {
-    return <input required type='text' name='name' defaultValue={`${this.state.info.name}`} />
+    return <NameField required type='text' name='name' defaultValue={`${this.state.info.name}`} />
   }
 
   renderDescriptionField() {
-    return <input type='text' name='description' defaultValue={`${this.state.info.description}`} />
+    return <DescriptionArea type='text' name='description' defaultValue={`${this.state.info.description}`} />
   }
 
   renderTimeFields(){
     return (
-      <div>
-        <input type='time' name="preptime" defaultValue={`${this.state.info.preptime}`} />
-        <br />
-        <label>Cook time: </label>
-        <input type='time' name="cooktime" defaultValue={`${this.state.info.cooktime}`} />
-      </div>
+      <TimesField>
+        <Box>
+          <label><span role="img" aria-label="clock image">⏰</span>Prep:</label>
+          <input type='time' name="preptime" defaultValue={`${this.state.info.preptime}`} />
+        </Box>
+        <Box>
+          <label><span role="img" aria-label="clock image">⏰</span>Cook:</label>
+          <input type='time' name="cooktime" defaultValue={`${this.state.info.cooktime}`} />
+        </Box>
+      </TimesField>
     )
   }
 
   renderIngredientInputField() {
     return this.state.ingredients.map((ingredient, index) => {
       return <div key={index} className='ingredient-field'>
-        <label>{`Ingredient ${index+1}`}</label>
-        <input required  type='text' name={`ingredient-${index}`} defaultValue={`${ingredient.name}`}/>
-        <label>Quantity</label>
-        <input required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredientquantity}`} />
-        <label>Unit of Measurement</label>
-        <input required  type='text' name={`measurement-${index}`} defaultValue={`${this.state.measurements[index].name}`}  />
+        <label>{`${index+1}.`}</label>
+        <IngredientInput required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredientquantity}`} />
+        <select  name={`measurement-${index}`}>
+          {this.createSelectItems(units)}
+        </select>
+        <IngredientInput required  type='text' name={`ingredient-${index}`} defaultValue={`${ingredient.name}`}/>
       </div>
     })
   }
@@ -61,8 +77,8 @@ class RecipeForm extends Component {
   renderStepInputField() {
     return this.state.steps.map((step, index) => {
       return <div key={index} className='ingredient-field'>
-        <label>{`Step ${index+1}`}</label>
-        <input required  type='text' name={`step-${index}`} defaultValue={`${step.stepdescription}`}/>
+        <label>{`${index+1}.`}</label>
+        <StepArea required  type='text' name={`step-${index}`} defaultValue={`${step.stepdescription}`}/>
       </div>
     })
   }
@@ -132,36 +148,31 @@ class RecipeForm extends Component {
 
   render() {
     return(
-      <fieldset>
-        <legend>Edit Recipe ID {`${this.state.id}`}</legend>
-        <form className='form' onSubmit={this.handleUpdate}>
-
-          <h4>Info</h4>
-          <label>Recipe Name</label>
-            { (this.state.info)? this.renderNameField():""}
-          <br />
-
-          <label>Description</label>
-            { (this.state.info)? this.renderDescriptionField():""}
-          <br />
-
-          <label>Prep time: </label>
-            { (this.state.info)? this.renderTimeFields():""}
-
-          <div className='ingredient-form-section'>
-            <h4>Ingredients</h4>
-            { (this.state.info)? this.renderIngredientInputField():"" }
-          </div>
-
-          <div className='steps-form-section'>
-            <h4>Steps</h4>
+      <FormWrapper className='form' onSubmit={this.handleUpdate}>
+        <LeftPart>
+          <Box>  { (this.state.info)? this.renderNameField():""} </Box>
+          <Box> { (this.state.info)? this.renderDescriptionField():""} </Box>
+          { (this.state.info)? this.renderTimeFields():""}
+          <Box>
+            <StepTitle>
+              <StepHeading>Ingredients</StepHeading>
+            </StepTitle>
+            <IngredientFieldList>
+              { (this.state.info)? this.renderIngredientInputField():"" }
+            </IngredientFieldList>
+          </Box>
+        </LeftPart>
+        <StepsPart>
+          <StepTitle>
+            <StepHeading>Steps</StepHeading>
+          </StepTitle>
+          <StepFieldList>
             { (this.state.info)? this.renderStepInputField():"" }
-          </div>
+          </StepFieldList>
+          <SubmitButton type='submit' value='Update Recipe' />
+        </StepsPart>
 
-          <input type='submit' value='Update Recipe' />
-
-        </form>
-      </fieldset>
+      </FormWrapper>
   )};
 };
 export default RecipeForm;
