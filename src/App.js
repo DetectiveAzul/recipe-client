@@ -1,3 +1,4 @@
+import './app.css';
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
 import RecipesContainer from './_containers/RecipesContainer.js';
