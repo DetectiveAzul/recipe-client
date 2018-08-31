@@ -57,8 +57,8 @@ export function addRecipeSuccess(recipe, id) {
     recipe: { id: id,
       name: recipe.info.name,
       description: recipe.info.description,
-      preptime: recipe.info.preptime,
-      cooktime: recipe.info.cooktime
+      prep_time: recipe.info.prep_time,
+      cook_time: recipe.info.cook_time
     }
   }
 }
@@ -79,8 +79,8 @@ export function updateRecipeSuccess(recipe, id) {
     recipe: { id: id,
       name: recipe.info.name,
       description: recipe.info.description,
-      preptime: recipe.info.preptime,
-      cooktime: recipe.info.cooktime
+      prep_time: recipe.info.prep_time,
+      cook_time: recipe.info.cook_time
      }
   }
 }

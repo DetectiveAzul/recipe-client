@@ -13,8 +13,8 @@ class RecipeForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      ingredientNumber: 1,
-      stepNumber: 1,
+      ingredient_number: 1,
+      step_number: 1,
     }
 
     this.increaseIngredients = this.increaseIngredients.bind(this);
@@ -25,50 +25,50 @@ class RecipeForm extends Component {
     this.createSelectItems = this.createSelectItems.bind(this);
   };
 
-  increaseIngredients(event) {
-    event.preventDefault();
-    let oldNumber = this.state.ingredientNumber;
-    oldNumber ++;
-    this.setState({
-      ingredientNumber: oldNumber
-    });
-  };
-
   createSelectItems(data){
     const newData = data.map((item, i) => <option key={i} value={item}>{item}</option>)
     return newData
   }
 
+  increaseIngredients(event) {
+    event.preventDefault();
+    let oldNumber = this.state.ingredient_number;
+    oldNumber ++;
+    this.setState({
+      ingredient_number: oldNumber
+    });
+  };
+
   decreaseIngredients(event) {
     event.preventDefault();
-    let oldNumber = this.state.ingredientNumber;
+    let oldNumber = this.state.ingredient_number;
     if (oldNumber > 1) oldNumber --;
     this.setState({
-      ingredientNumber: oldNumber
+      ingredient_number: oldNumber
     });
   };
 
   increaseSteps(event) {
     event.preventDefault();
-    let oldNumber = this.state.stepNumber;
+    let oldNumber = this.state.step_number;
     oldNumber ++;
     this.setState({
-      stepNumber: oldNumber
+      step_number: oldNumber
     });
   };
 
   decreaseSteps(event) {
     event.preventDefault();
-    let oldNumber = this.state.stepNumber;
+    let oldNumber = this.state.step_number;
     if (oldNumber > 1) oldNumber --;
     this.setState({
-      stepNumber: oldNumber
+      step_number: oldNumber
     });
   };
 
   renderIngredientInputField() {
     const ingredients = []
-    for (var i = 0; i < this.state.ingredientNumber; i++) {
+    for (var i = 0; i < this.state.ingredient_number; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
           <label>{i+1}.</label>
@@ -85,7 +85,7 @@ class RecipeForm extends Component {
 
   renderStepInputField() {
     const ingredients = []
-    for (var i = 0; i < this.state.stepNumber; i++) {
+    for (var i = 0; i < this.state.step_number; i++) {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`${i+1}.`}</label>
@@ -110,14 +110,14 @@ class RecipeForm extends Component {
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
-      preptime: event.target.preptime.value,
-      cooktime: event.target.cooktime.value
+      prep_time: event.target.prep_time.value,
+      cook_time: event.target.cook_time.value
     }
   }
 
   getIngredients(event) {
     const ingredients = [];
-    for (var i = 0; i < this.state.ingredientNumber; i++) {
+    for (var i = 0; i < this.state.ingredient_number; i++) {
       const newIngredient = {
         ingredient: trimAndCapitalise(event.target[`ingredient-${i}`].value),
         quantity: event.target[`quantity-${i}`].value,
@@ -130,10 +130,10 @@ class RecipeForm extends Component {
 
   getSteps(event) {
     const steps = [];
-    for (var i = 0; i < this.state.stepNumber; i++) {
+    for (var i = 0; i < this.state.step_number; i++) {
       const newStep = {
-        stepNumber: i+1,
-        stepDescription: event.target[`step-${i}`].value
+        step_number: i+1,
+        step_description: event.target[`step-${i}`].value
       }
       steps.push(newStep);
     }
@@ -153,11 +153,11 @@ class RecipeForm extends Component {
               <TimesField>
                 <Box>
                   <label><span role="img" aria-label="clock image">⏰</span>Prep:</label>
-                  <input type='time' name="preptime" />
+                  <input type='time' name="prep_time" />
                 </Box>
                 <Box>
                   <label><span role="img" aria-label="clock image">⏰</span>Cook:</label>
-                  <input type='time' name="cooktime" />
+                  <input type='time' name="cook_time" />
                 </Box>
               </TimesField>
               <Box>

@@ -11,7 +11,7 @@ const RecipeIngredients = ({ingredients, quantities, measurements}) => {
           ingredients.map((ingredient, index) => {
             return(
               <li key={index}>
-                {`${quantities[index].ingredientquantity}
+                {`${quantities[index].ingredient_quantity}
                 ${measurements[index].name}
                 ${ingredient.name}`}</li>
             )

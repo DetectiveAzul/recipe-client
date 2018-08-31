@@ -10,7 +10,7 @@ const RecipeSteps = ({steps}) => {
         {
           steps.map((step, index) => {
             return(
-              <li key={index}>{step.stepdescription}</li>
+              <li key={index}>{step.step_description}</li>
             )
           })
         }

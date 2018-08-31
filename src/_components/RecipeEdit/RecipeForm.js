@@ -51,11 +51,11 @@ class RecipeForm extends Component {
       <TimesField>
         <Box>
           <label><span role="img" aria-label="clock image">⏰</span>Prep:</label>
-          <input type='time' name="preptime" defaultValue={`${this.state.info.preptime}`} />
+          <input type='time' name="preptime" defaultValue={`${this.state.info.prep_time}`} />
         </Box>
         <Box>
           <label><span role="img" aria-label="clock image">⏰</span>Cook:</label>
-          <input type='time' name="cooktime" defaultValue={`${this.state.info.cooktime}`} />
+          <input type='time' name="cooktime" defaultValue={`${this.state.info.cook_time}`} />
         </Box>
       </TimesField>
     )
@@ -65,7 +65,7 @@ class RecipeForm extends Component {
     return this.state.ingredients.map((ingredient, index) => {
       return <div key={index} className='ingredient-field'>
         <label>{`${index+1}.`}</label>
-        <IngredientInput required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredientquantity}`} />
+        <IngredientInput required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredient_quantity}`} />
         <select  name={`measurement-${index}`}>
           {this.createSelectItems(units)}
         </select>
@@ -78,7 +78,7 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return <div key={index} className='ingredient-field'>
         <label>{`${index+1}.`}</label>
-        <StepArea required  type='text' name={`step-${index}`} defaultValue={`${step.stepdescription}`}/>
+        <StepArea required  type='text' name={`step-${index}`} defaultValue={`${step.step_description}`}/>
       </div>
     })
   }
@@ -96,12 +96,11 @@ class RecipeForm extends Component {
   };
 
   getInfo(event) {
-    console.log(event.target.cooktime.value);
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
-      preptime: event.target.preptime.value,
-      cooktime: event.target.cooktime.value
+      prep_time: event.target.prep_time.value,
+      cook_time: event.target.cook_time.value
     }
   }
 
@@ -127,10 +126,10 @@ class RecipeForm extends Component {
     return this.state.quantities.map((quantity, index) => {
       return {
         id: quantity.id,
-        recipeId: this.state.id,
-        ingredientQuantity: event.target[`quantity-${index}`].value,
-        ingredientId: this.state.ingredients[index].id,
-        measurementId: this.state.measurements[index].id
+        recipe_id: this.state.id,
+        ingredient_quantity: event.target[`quantity-${index}`].value,
+        ingredient_id: this.state.ingredients[index].id,
+        measurement_id: this.state.measurements[index].id
       };
     });
   };

@@ -8,6 +8,7 @@ import NotFound from './_containers/NotFound.js';
 import NewRecipe from './_containers/NewRecipe.js';
 import EditRecipe from './_containers/EditRecipe.js';
 import NavBar from './_components/NavBar.js';
+import ConversionGuide from './_containers/ConversionGuide'
 import { connect } from 'react-redux';
 import {
   fetchRecipes,
@@ -47,6 +48,7 @@ class App extends Component{
     return(
       <div className='App'>
         <NavBar />
+<<<<<<< HEAD
         <RouterWrapper >
           <Router>
             <Home path="/" />
@@ -54,9 +56,21 @@ class App extends Component{
             <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
             <EditRecipe path="/recipes/:id/edit" />
             <NewRecipe path="/recipes/new" />
+            <ConversionGuide path="/guide" />
             <NotFound default />
           </Router>
         </RouterWrapper>
+=======
+        <Router>
+          <Home path="/" />
+          <RecipesContainer path="/recipes/" recipes={recipes}  />
+          <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
+          <EditRecipe path="/recipes/:id/edit" />
+          <NewRecipe path="/recipes/new" />
+          <ConversionGuide path="/guide" />
+          <NotFound default />
+        </Router>
+>>>>>>> development
       </div>
     )
   }

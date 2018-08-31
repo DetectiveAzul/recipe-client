@@ -24,6 +24,7 @@ const NavLink = props => (
 
 const NavBar = () => {
   return(
+<<<<<<< HEAD
     <NavBarWrapper>
       <LogoWrapper>
         <TitleWrapper>foodie</TitleWrapper>
@@ -35,6 +36,14 @@ const NavBar = () => {
         <LinkWrapper><NavLink to="/recipes/new/">New</NavLink></LinkWrapper>
       </LinkList>
     </NavBarWrapper>
+=======
+    <nav>
+      <Link to="/">Home</Link> |{" "}
+      <Link to="/recipes/">Recipes</Link> |{" "}
+      <Link to="/recipes/new/">New</Link> |{" "}
+      <Link to="/guide">Conversion Guide</Link>
+    </nav>
+>>>>>>> development
   );
 };
 
