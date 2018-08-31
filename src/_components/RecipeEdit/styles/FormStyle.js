@@ -57,7 +57,7 @@ export const StepArea = styled.textarea`
   margin-left: 5px;
 `
 
-export const StepTitle = styled.div`
+export const TitleSection = styled.div`
   display: flex;
 `
 
@@ -84,7 +84,7 @@ export const SubmitButton = styled.input`
 `;
 
 
-export const StepHeading = styled.h4`
+export const SectionHeading = styled.h4`
   flex: 2;
   text-align: center;
 `

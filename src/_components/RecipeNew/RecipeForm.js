@@ -4,7 +4,7 @@ import units from '../../data/units'
 //Styles
 import {
   FormWrapper, LeftPart, RightPart, StepsPart, TimesField, Box,
-  DescriptionArea, NameField, StepArea, StepTitle, Button, StepHeading,
+  DescriptionArea, NameField, StepArea, TitleSection, Button, SectionHeading,
   ButtonDiv, StepFieldList, IngredientInput, IngredientFieldList,
   SubmitButton
 } from './styles/FormStyle.js';
@@ -161,26 +161,26 @@ class RecipeForm extends Component {
                 </Box>
               </TimesField>
               <Box>
-                <StepTitle>
-                  <StepHeading>Ingredients</StepHeading>
+                <TitleSection>
+                  <SectionHeading>Ingredients</SectionHeading>
                   <ButtonDiv>
                     <Button onClick={this.increaseIngredients}>+</Button>
                     <Button onClick={this.decreaseIngredients}>-</Button>
                   </ButtonDiv>
-                </StepTitle>
+                </TitleSection>
                 <IngredientFieldList>
                   { this.renderIngredientInputField() }
                 </IngredientFieldList>
               </Box>
             </LeftPart>
             <StepsPart>
-              <StepTitle>
-                <StepHeading>Steps</StepHeading>
+              <TitleSection>
+                <SectionHeading>Steps</SectionHeading>
                 <ButtonDiv>
                   <Button onClick={this.increaseSteps}>+</Button>
                   <Button onClick={this.decreaseSteps}>-</Button>
                 </ButtonDiv>
-              </StepTitle>
+              </TitleSection>
               <StepFieldList>
                 { this.renderStepInputField() }
               </StepFieldList>
