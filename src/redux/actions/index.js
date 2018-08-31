@@ -42,7 +42,6 @@ export function fetchRecipes() {
 }
 
 export function addRecipe(recipe) {
-  console.log(recipe);
   const api = new ApiHelper('/recipes/full')
     return dispatch => {
       api.post(recipe)
@@ -75,7 +74,6 @@ export function updateRecipe(recipe, id) {
 }
 
 export function updateRecipeSuccess(recipe, id) {
-  console.log(recipe);
   return{
     type: UPDATE_RECIPE_SUCCESS,
     recipe: { id: id,

@@ -122,7 +122,8 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return {
         id: step.id,
-        step_number: index,
+        recipe_id: step.recipe_id,
+        step_number: step.step_number,
         step_description: event.target[`step-${index}`].value
       };
     });

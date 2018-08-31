@@ -110,7 +110,6 @@ class RecipeForm extends Component {
       ingredients: this.getIngredients(event),
       steps: this.getSteps(event)
     }
-    console.log(recipe);
     this.props.addRecipe(recipe);
   }
 
