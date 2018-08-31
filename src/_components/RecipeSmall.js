@@ -1,7 +1,12 @@
 import React from 'react';
-import {RecipeWrapper, InfoWrapper} from './styles/ComponentStyle.js';
 import { navigate } from '@reach/router';
 import {prettyTime} from '../_helpers/prettify'
+import {
+  RecipeWrapper, TitleWrapper,
+  DescriptionWrapper, TimeWrapper,
+  InfoWrapper
+} from './styles/ComponentStyle.js';
+
 
 
 const RecipeSmall = ({ recipe, deleteRecipe }) => {
@@ -9,13 +14,11 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
     navigate(`/recipes/${recipe.id}`);
   }
   return(
-    <RecipeWrapper>
-      <InfoWrapper onClick={handleClick} >
-        <h3>{recipe.name}</h3>
-        <p>{recipe.description}</p>
-        <p>Prep time: {prettyTime(recipe.preptime)}</p>
-        <p>Cook time: {prettyTime(recipe.cooktime)}</p>
-      </InfoWrapper>
+    <RecipeWrapper onClick={handleClick}>
+      <TitleWrapper>{recipe.name}</TitleWrapper>
+      <DescriptionWrapper>{recipe.description}</DescriptionWrapper>
+      <TimeWrapper> ⏰ <strong>Preparation</strong>: {prettyTime(recipe.preptime)}</TimeWrapper>
+      <TimeWrapper> ⏰ <strong>Cook time:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
     </RecipeWrapper>
   );
 };

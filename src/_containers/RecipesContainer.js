@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RecipeSmall from '../_components/RecipeSmall.js';
+//Style
+import { RecipeListWrapper } from './styles/RecipesContainerStyle.js';
 
 export default class RecipesContainer extends Component {
 
@@ -12,7 +14,7 @@ export default class RecipesContainer extends Component {
       )
     }
     return(
-      <div className='recipe-list'>
+      <RecipeListWrapper>
       {this.props.recipes.map((recipe, index) => {
             return(<RecipeSmall
               key={index}
@@ -20,7 +22,7 @@ export default class RecipesContainer extends Component {
               />)
         })
       }
-    </div>
+    </RecipeListWrapper>
     )
   }
 }
