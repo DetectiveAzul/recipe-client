@@ -13,8 +13,8 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
       <InfoWrapper onClick={handleClick} >
         <h3>{recipe.name}</h3>
         <p>{recipe.description}</p>
-        <p>Prep time: {prettyTime(recipe.preptime)}</p>
-        <p>Cook time: {prettyTime(recipe.cooktime)}</p>
+        <p>Prep time: {prettyTime(recipe.prep_time)}</p>
+        <p>Cook time: {prettyTime(recipe.cook_time)}</p>
       </InfoWrapper>
     </RecipeWrapper>
   );

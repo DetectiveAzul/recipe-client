@@ -7,8 +7,8 @@ const RecipeInfo = ({info}) => {
       <h4>Recipe Info</h4>
       <p>{info.name}</p>
       <p>{info.description}</p>
-      <p>Prep time: {prettyTime(info.preptime)}</p>
-      <p>Cook time: {prettyTime(info.cooktime)}</p>
+      <p>Prep time: {prettyTime(info.prep_time)}</p>
+      <p>Cook time: {prettyTime(info.cook_time)}</p>
     </div>
   );
 }

@@ -37,10 +37,10 @@ class RecipeForm extends Component {
   renderTimeFields(){
     return (
       <div>
-        <input type='time' name="preptime" defaultValue={`${this.state.info.preptime}`} />
+        <input type='time' name="prep_time" defaultValue={`${this.state.info.prep_time}`} />
         <br />
         <label>Cook time: </label>
-        <input type='time' name="cooktime" defaultValue={`${this.state.info.cooktime}`} />
+        <input type='time' name="cook_time" defaultValue={`${this.state.info.cook_time}`} />
       </div>
     )
   }
@@ -80,12 +80,11 @@ class RecipeForm extends Component {
   };
 
   getInfo(event) {
-    console.log(event.target.cooktime.value);
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
-      preptime: event.target.preptime.value,
-      cooktime: event.target.cooktime.value
+      prep_time: event.target.prep_time.value,
+      cook_time: event.target.cook_time.value
     }
   }
 
@@ -111,10 +110,10 @@ class RecipeForm extends Component {
     return this.state.quantities.map((quantity, index) => {
       return {
         id: quantity.id,
-        recipeId: this.state.id,
-        ingredientQuantity: event.target[`quantity-${index}`].value,
-        ingredientId: this.state.ingredients[index].id,
-        measurementId: this.state.measurements[index].id
+        recipe_id: this.state.id,
+        ingredient_quantity: event.target[`quantity-${index}`].value,
+        ingredient_id: this.state.ingredients[index].id,
+        measurement_id: this.state.measurements[index].id
       };
     });
   };
@@ -123,8 +122,8 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return {
         id: step.id,
-        stepNumber: index,
-        stepDescription: event.target[`step-${index}`].value
+        step_number: index,
+        step_description: event.target[`step-${index}`].value
       };
     });
   };

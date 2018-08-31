@@ -42,10 +42,12 @@ export function fetchRecipes() {
 }
 
 export function addRecipe(recipe) {
+  console.log(recipe);
   const api = new ApiHelper('/recipes/full')
     return dispatch => {
       api.post(recipe)
         .then((res) => {
+          console.log(res);
           dispatch(addRecipeSuccess(recipe, res.new_entry.id))
         })
     }
@@ -57,8 +59,8 @@ export function addRecipeSuccess(recipe, id) {
     recipe: { id: id,
       name: recipe.info.name,
       description: recipe.info.description,
-      preptime: recipe.info.preptime,
-      cooktime: recipe.info.cooktime
+      prep_time: recipe.info.prep_time,
+      cook_time: recipe.info.cook_time
     }
   }
 }
@@ -79,8 +81,8 @@ export function updateRecipeSuccess(recipe, id) {
     recipe: { id: id,
       name: recipe.info.name,
       description: recipe.info.description,
-      preptime: recipe.info.preptime,
-      cooktime: recipe.info.cooktime
+      prep_time: recipe.info.prep_time,
+      cook_time: recipe.info.cook_time
      }
   }
 }

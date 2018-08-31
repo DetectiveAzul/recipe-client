@@ -18,6 +18,11 @@ class RecipeForm extends Component {
     this.createSelectItems = this.createSelectItems.bind(this);
   };
 
+  createSelectItems(data){
+    const newData = data.map((item, i) => <option key={i} value={item}>{item}</option>)
+    return newData
+  }
+
   increaseIngredients(event) {
     event.preventDefault();
     let oldNumber = this.state.ingredientNumber;
@@ -26,11 +31,6 @@ class RecipeForm extends Component {
       ingredientNumber: oldNumber
     });
   };
-
-  createSelectItems(data){
-    const newData = data.map((item, i) => <option key={i} value={item}>{item}</option>)
-    return newData
-  }
 
   decreaseIngredients(event) {
     event.preventDefault();
@@ -117,8 +117,8 @@ class RecipeForm extends Component {
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
-      preptime: event.target.preptime.value,
-      cooktime: event.target.cooktime.value
+      prep_time: event.target.prep_time.value,
+      cook_time: event.target.cook_time.value
     }
   }
 
@@ -160,10 +160,10 @@ class RecipeForm extends Component {
             <input type='text' name='description'/>
             <br />
             <label>Prep time: </label>
-            <input type='time' name="preptime" />
+            <input type='time' name="prep_time" />
             <br />
             <label>Cook time: </label>
-            <input type='time' name="cooktime" />
+            <input type='time' name="cook_time" />
             <div className='ingredient-form-section'>
               <h4>Ingredients</h4>
               { this.renderIngredientInputField() }
