@@ -51,7 +51,7 @@ class RecipeForm extends Component {
         <label>{`Ingredient ${index+1}`}</label>
         <input required  type='text' name={`ingredient-${index}`} defaultValue={`${ingredient.name}`}/>
         <label>Quantity</label>
-        <input required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredientquantity}`} />
+        <input required  type='number' name={`quantity-${index}`} defaultValue={`${this.state.quantities[index].ingredient_quantity}`} />
         <label>Unit of Measurement</label>
         <input required  type='text' name={`measurement-${index}`} defaultValue={`${this.state.measurements[index].name}`}  />
       </div>
@@ -62,7 +62,7 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return <div key={index} className='ingredient-field'>
         <label>{`Step ${index+1}`}</label>
-        <input required  type='text' name={`step-${index}`} defaultValue={`${step.stepdescription}`}/>
+        <input required  type='text' name={`step-${index}`} defaultValue={`${step.step_description}`}/>
       </div>
     })
   }

@@ -6,8 +6,8 @@ class RecipeForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      ingredientNumber: 1,
-      stepNumber: 1,
+      ingredient_number: 1,
+      step_number: 1,
     }
 
     this.increaseIngredients = this.increaseIngredients.bind(this);
@@ -25,43 +25,43 @@ class RecipeForm extends Component {
 
   increaseIngredients(event) {
     event.preventDefault();
-    let oldNumber = this.state.ingredientNumber;
+    let oldNumber = this.state.ingredient_number;
     oldNumber ++;
     this.setState({
-      ingredientNumber: oldNumber
+      ingredient_number: oldNumber
     });
   };
 
   decreaseIngredients(event) {
     event.preventDefault();
-    let oldNumber = this.state.ingredientNumber;
+    let oldNumber = this.state.ingredient_number;
     if (oldNumber > 1) oldNumber --;
     this.setState({
-      ingredientNumber: oldNumber
+      ingredient_number: oldNumber
     });
   };
 
   increaseSteps(event) {
     event.preventDefault();
-    let oldNumber = this.state.stepNumber;
+    let oldNumber = this.state.step_number;
     oldNumber ++;
     this.setState({
-      stepNumber: oldNumber
+      step_number: oldNumber
     });
   };
 
   decreaseSteps(event) {
     event.preventDefault();
-    let oldNumber = this.state.stepNumber;
+    let oldNumber = this.state.step_number;
     if (oldNumber > 1) oldNumber --;
     this.setState({
-      stepNumber: oldNumber
+      step_number: oldNumber
     });
   };
 
   renderIngredientInputField() {
     const ingredients = []
-    for (var i = 0; i < this.state.ingredientNumber; i++) {
+    for (var i = 0; i < this.state.ingredient_number; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
           <label>Amount</label>
@@ -72,7 +72,7 @@ class RecipeForm extends Component {
           </select>
           <label>{`Ingredient ${i+1}`}</label>
           <input required type='text' name={`ingredient-${i}`}/>
-           { (i === this.state.ingredientNumber -1) ?
+           { (i === this.state.ingredient_number -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseIngredients}>+</button>
               <button onClick={this.decreaseIngredients}>-</button>
@@ -86,12 +86,12 @@ class RecipeForm extends Component {
 
   renderStepInputField() {
     const ingredients = []
-    for (var i = 0; i < this.state.stepNumber; i++) {
+    for (var i = 0; i < this.state.step_number; i++) {
       ingredients.push(
         <div key={i} className='step-field'>
           <label>{`Step number ${i+1}`}</label>
           <textarea required type='text' name={`step-${i}`}/>
-           { (i === this.state.stepNumber -1) ?
+           { (i === this.state.step_number -1) ?
             <div className="control-buttons">
               <button onClick={this.increaseSteps}>+</button>
               <button onClick={this.decreaseSteps}>-</button>
@@ -110,6 +110,7 @@ class RecipeForm extends Component {
       ingredients: this.getIngredients(event),
       steps: this.getSteps(event)
     }
+    console.log(recipe);
     this.props.addRecipe(recipe);
   }
 
@@ -124,7 +125,7 @@ class RecipeForm extends Component {
 
   getIngredients(event) {
     const ingredients = [];
-    for (var i = 0; i < this.state.ingredientNumber; i++) {
+    for (var i = 0; i < this.state.ingredient_number; i++) {
       const newIngredient = {
         ingredient: trimAndCapitalise(event.target[`ingredient-${i}`].value),
         quantity: event.target[`quantity-${i}`].value,
@@ -137,10 +138,10 @@ class RecipeForm extends Component {
 
   getSteps(event) {
     const steps = [];
-    for (var i = 0; i < this.state.stepNumber; i++) {
+    for (var i = 0; i < this.state.step_number; i++) {
       const newStep = {
-        stepNumber: i+1,
-        stepDescription: event.target[`step-${i}`].value
+        step_number: i+1,
+        step_description: event.target[`step-${i}`].value
       }
       steps.push(newStep);
     }

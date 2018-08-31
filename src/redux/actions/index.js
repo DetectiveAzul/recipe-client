@@ -47,7 +47,6 @@ export function addRecipe(recipe) {
     return dispatch => {
       api.post(recipe)
         .then((res) => {
-          console.log(res);
           dispatch(addRecipeSuccess(recipe, res.new_entry.id))
         })
     }
@@ -76,6 +75,7 @@ export function updateRecipe(recipe, id) {
 }
 
 export function updateRecipeSuccess(recipe, id) {
+  console.log(recipe);
   return{
     type: UPDATE_RECIPE_SUCCESS,
     recipe: { id: id,
