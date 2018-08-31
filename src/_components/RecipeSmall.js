@@ -13,21 +13,11 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
     navigate(`/recipes/${recipe.id}`);
   }
   return(
-<<<<<<< HEAD
     <RecipeWrapper onClick={handleClick}>
       <TitleWrapper>{recipe.name}</TitleWrapper>
       <DescriptionWrapper>{recipe.description}</DescriptionWrapper>
-      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Prep:</strong> {prettyTime(recipe.preptime)}</TimeWrapper>
-      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Cook:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
-=======
-    <RecipeWrapper>
-      <InfoWrapper onClick={handleClick} >
-        <h3>{recipe.name}</h3>
-        <p>{recipe.description}</p>
-        <p>Prep time: {prettyTime(recipe.prep_time)}</p>
-        <p>Cook time: {prettyTime(recipe.cook_time)}</p>
-      </InfoWrapper>
->>>>>>> development
+      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Prep:</strong> {prettyTime(recipe.prep_time)}</TimeWrapper>
+      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Cook:</strong> {prettyTime(recipe.cook_time)}</TimeWrapper>
     </RecipeWrapper>
   );
 };

@@ -48,7 +48,6 @@ class App extends Component{
     return(
       <div className='App'>
         <NavBar />
-<<<<<<< HEAD
         <RouterWrapper >
           <Router>
             <Home path="/" />
@@ -60,17 +59,6 @@ class App extends Component{
             <NotFound default />
           </Router>
         </RouterWrapper>
-=======
-        <Router>
-          <Home path="/" />
-          <RecipesContainer path="/recipes/" recipes={recipes}  />
-          <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
-          <EditRecipe path="/recipes/:id/edit" />
-          <NewRecipe path="/recipes/new" />
-          <ConversionGuide path="/guide" />
-          <NotFound default />
-        </Router>
->>>>>>> development
       </div>
     )
   }
