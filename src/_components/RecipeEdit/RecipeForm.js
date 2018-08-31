@@ -5,7 +5,7 @@ import {trimAndCapitalise} from '../../_helpers/prettify.js'
 import units from '../../data/units.js'
 
 import {
-  FormWrapper, LeftPart, RightPart, StepsPart, TimesField, Box,
+  FormWrapper, LeftPart, StepsPart, TimesField, Box,
   DescriptionArea, NameField, StepArea, TitleSection, SectionHeading,
   StepFieldList, IngredientInput, IngredientFieldList, SubmitButton
 } from './styles/FormStyle.js';
@@ -51,11 +51,11 @@ class RecipeForm extends Component {
       <TimesField>
         <Box>
           <label><span role="img" aria-label="clock image">⏰</span>Prep:</label>
-          <input type='time' name="preptime" defaultValue={`${this.state.info.prep_time}`} />
+          <input type='time' name="prep_time" defaultValue={`${this.state.info.prep_time}`} />
         </Box>
         <Box>
           <label><span role="img" aria-label="clock image">⏰</span>Cook:</label>
-          <input type='time' name="cooktime" defaultValue={`${this.state.info.cook_time}`} />
+          <input type='time' name="cook_time" defaultValue={`${this.state.info.cook_time}`} />
         </Box>
       </TimesField>
     )
@@ -138,9 +138,9 @@ class RecipeForm extends Component {
     return this.state.steps.map((step, index) => {
       return {
         id: step.id,
-        recipeId: this.state.id,
-        stepNumber: index,
-        stepDescription: event.target[`step-${index}`].value
+        recipe_id: this.state.id,
+        step_number: index,
+        step_description: event.target[`step-${index}`].value
       };
     });
   };

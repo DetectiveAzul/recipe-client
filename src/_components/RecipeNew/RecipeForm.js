@@ -3,7 +3,7 @@ import { trimAndCapitalise } from '../../_helpers/prettify'
 import units from '../../data/units'
 //Styles
 import {
-  FormWrapper, LeftPart, RightPart, StepsPart, TimesField, Box,
+  FormWrapper, LeftPart, StepsPart, TimesField, Box,
   DescriptionArea, NameField, StepArea, TitleSection, Button, SectionHeading,
   ButtonDiv, StepFieldList, IngredientInput, IngredientFieldList,
   SubmitButton
@@ -110,8 +110,8 @@ class RecipeForm extends Component {
     return {
       name: trimAndCapitalise(event.target.name.value),
       description: event.target.description.value,
-      prep_time: event.target.prep_time.value,
-      cook_time: event.target.cook_time.value
+      prep_time: event.target["prep_time"].value,
+      cook_time: event.target["cook_time"].value
     }
   }
 
