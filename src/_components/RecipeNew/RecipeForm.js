@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import { trimAndCapitalise } from '../../_helpers/prettify'
 import units from '../../data/units'
+//Styles
+import {
+  FormWrapper, LeftPart, RightPart, StepsPart, TimesField, Box,
+  DescriptionArea, NameField, StepArea, StepTitle, Button, StepHeading,
+  ButtonDiv, StepFieldList, IngredientInput, IngredientFieldList,
+  SubmitButton
+} from './styles/FormStyle.js';
 
 class RecipeForm extends Component {
   constructor(props) {
@@ -64,20 +71,12 @@ class RecipeForm extends Component {
     for (var i = 0; i < this.state.ingredientNumber; i++) {
       ingredients.push(
         <div key={i} className='ingredient-field'>
-          <label>Amount</label>
-          <input required type="number" name={`quantity-${i}`} step="any" />
-          <label>Units</label>
+          <label>{i+1}.</label>
+          <IngredientInput required type="number" name={`quantity-${i}`} step="any" placeholder="Amount" />
           <select  name={`measurement-${i}`}>
             {this.createSelectItems(units)}
           </select>
-          <label>{`Ingredient ${i+1}`}</label>
-          <input required type='text' name={`ingredient-${i}`}/>
-           { (i === this.state.ingredientNumber -1) ?
-            <div className="control-buttons">
-              <button onClick={this.increaseIngredients}>+</button>
-              <button onClick={this.decreaseIngredients}>-</button>
-            </div>
-            : "" }
+          <IngredientInput required type='text' name={`ingredient-${i}`} placeholder="Ingredient"/>
         </div>
       )
     };
@@ -89,14 +88,8 @@ class RecipeForm extends Component {
     for (var i = 0; i < this.state.stepNumber; i++) {
       ingredients.push(
         <div key={i} className='step-field'>
-          <label>{`Step number ${i+1}`}</label>
-          <textarea required type='text' name={`step-${i}`}/>
-           { (i === this.state.stepNumber -1) ?
-            <div className="control-buttons">
-              <button onClick={this.increaseSteps}>+</button>
-              <button onClick={this.decreaseSteps}>-</button>
-            </div>
-             : "" }
+          <label>{`${i+1}.`}</label>
+          <StepArea required type='text' name={`step-${i}`} rows="1"/>
         </div>
       )
     };
@@ -149,32 +142,51 @@ class RecipeForm extends Component {
 
   render() {
     return(
-      <fieldset>
-        <legend>Add new recipe</legend>
-          <form className='form' onSubmit={this.submitRecipe}>
-            <h4>Info</h4>
-            <label>Recipe Name</label>
-            <input required type='text' name='name'/>
-            <br />
-            <label>Description</label>
-            <input type='text' name='description'/>
-            <br />
-            <label>Prep time: </label>
-            <input type='time' name="preptime" />
-            <br />
-            <label>Cook time: </label>
-            <input type='time' name="cooktime" />
-            <div className='ingredient-form-section'>
-              <h4>Ingredients</h4>
-              { this.renderIngredientInputField() }
-            </div>
-            <div className='steps-form-section'>
-              <h4>Steps</h4>
-              { this.renderStepInputField() }
-            </div>
-            <input type='submit' value='Add Recipe' />
-          </form>
-      </fieldset>
+          <FormWrapper className='form' onSubmit={this.submitRecipe}>
+            <LeftPart>
+              <Box>
+                <NameField required type='text' name='name' placeholder='Recipe Name'/>
+              </Box>
+              <Box>
+                <DescriptionArea type='text' name='description' placeholder='Brief description of the recipe'/>
+              </Box>
+              <TimesField>
+                <Box>
+                  <label><span role="img" aria-label="clock image">⏰</span>Prep:</label>
+                  <input type='time' name="preptime" />
+                </Box>
+                <Box>
+                  <label><span role="img" aria-label="clock image">⏰</span>Cook:</label>
+                  <input type='time' name="cooktime" />
+                </Box>
+              </TimesField>
+              <Box>
+                <StepTitle>
+                  <StepHeading>Ingredients</StepHeading>
+                  <ButtonDiv>
+                    <Button onClick={this.increaseIngredients}>+</Button>
+                    <Button onClick={this.decreaseIngredients}>-</Button>
+                  </ButtonDiv>
+                </StepTitle>
+                <IngredientFieldList>
+                  { this.renderIngredientInputField() }
+                </IngredientFieldList>
+              </Box>
+            </LeftPart>
+            <StepsPart>
+              <StepTitle>
+                <StepHeading>Steps</StepHeading>
+                <ButtonDiv>
+                  <Button onClick={this.increaseSteps}>+</Button>
+                  <Button onClick={this.decreaseSteps}>-</Button>
+                </ButtonDiv>
+              </StepTitle>
+              <StepFieldList>
+                { this.renderStepInputField() }
+              </StepFieldList>
+              <SubmitButton type='submit' value='Add Recipe' />
+            </StepsPart>
+          </FormWrapper>
     )
   };
 };
