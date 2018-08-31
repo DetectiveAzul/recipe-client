@@ -10,7 +10,7 @@ import { navigate } from '@reach/router';
 //Styles
 import {
   RecipeViewWrapper, LeftPart, RightPart, IngredientRow, Button,
-  StepsPart, BodyWrapper
+  StepsPart, BodyWrapper, Box
 } from './styles/IndividualRecipeStyle.js';
 
 class IndividualRecipe extends Component {
@@ -66,7 +66,7 @@ class IndividualRecipe extends Component {
               <RecipeSteps steps={this.state.recipe.steps} />
             </StepsPart>
           </RecipeViewWrapper>
-          : 'Recipe not found'
+          : <Box>Recipe not found</Box>
         }
       </BodyWrapper>
     );
