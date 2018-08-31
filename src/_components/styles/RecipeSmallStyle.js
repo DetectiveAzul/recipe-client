@@ -8,6 +8,10 @@ export const RecipeWrapper = styled.div `
   margin: 15px;
   background-color: rgb(255,250,250, 0.75);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+
+  &:hover {
+    background-color: rgb(255,250,250, 1);
+  }
 `
 
 export const TitleWrapper = styled.div `

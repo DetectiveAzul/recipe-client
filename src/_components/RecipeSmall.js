@@ -16,8 +16,8 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
     <RecipeWrapper onClick={handleClick}>
       <TitleWrapper>{recipe.name}</TitleWrapper>
       <DescriptionWrapper>{recipe.description}</DescriptionWrapper>
-      <TimeWrapper> ⏰ <strong>Prep:</strong> {prettyTime(recipe.preptime)}</TimeWrapper>
-      <TimeWrapper> ⏰ <strong>Cook:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
+      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Prep:</strong> {prettyTime(recipe.preptime)}</TimeWrapper>
+      <TimeWrapper> <span role="img" aria-label="clock image">⏰</span> <strong>Cook:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
     </RecipeWrapper>
   );
 };
