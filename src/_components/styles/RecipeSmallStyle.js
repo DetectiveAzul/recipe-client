@@ -4,7 +4,7 @@ export const RecipeWrapper = styled.div `
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 300px;
+  height: 275px;
   margin: 15px;
   background-color: rgb(255,250,250, 0.75);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);

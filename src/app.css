@@ -1,7 +1,7 @@
 body {
   background-image: url("./_images/background-kitchen.jpg");
+  min-width: 600px;
   background-size: 100% 100%;
   background-attachment: fixed;
   background-repeat: round;
-  min-width: 600px;
 }

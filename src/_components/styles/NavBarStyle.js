@@ -6,8 +6,8 @@ export const NavBarWrapper = styled.div `
   flex-direction: row;
   justify-content: space-between;
   height: 80px;
-  min-width: 600px;
   width: 95%;
+  min-width: 650px;
   margin: 15px;
   background-color: rgb(255,250,250, 0.8);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
@@ -17,7 +17,7 @@ export const TitleWrapper = styled.div `
   font-size: 60px;
   font-weight: 700;
   margin: 5px 20px;
-  color: rgb(225, 84, 0);
+  color: green;
 `
 
 export const Tomato = styled.img.attrs({
