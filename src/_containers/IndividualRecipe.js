@@ -1,5 +1,3 @@
-//TODO: REFACTOR TO REDUX
-
 import React, { Component } from 'react';
 import fetch from 'cross-fetch';
 import config from '../_helpers/config.js';
@@ -7,8 +5,12 @@ import config from '../_helpers/config.js';
 import RecipeInfo from '../_components/RecipeView/RecipeInfo.js'
 import RecipeIngredients from '../_components/RecipeView/RecipeIngredients.js'
 import RecipeSteps from '../_components/RecipeView/RecipeSteps.js'
-import { Button } from '../_components/styles/RecipeSmallStyle.js';
 import { navigate } from '@reach/router';
+
+//Styles
+import {
+  RecipeViewWrapper, LeftPart, RightPart, IngredientRow, Button
+} from './styles/IndividualRecipeStyle.js';
 
 class IndividualRecipe extends Component {
   constructor(props) {
@@ -39,20 +41,30 @@ class IndividualRecipe extends Component {
 
   render() {
     return(
-      <div className='recipeView'>
+      <div className='individual-recipe'>
         {
           (this.state.recipe) ?
-          <div className='recipeView'>
-            <RecipeInfo info={this.state.recipe.info} />
-            <RecipeIngredients
-              ingredients={this.state.recipe.ingredients}
-              quantities={this.state.recipe.quantities}
-              measurements={this.state.recipe.measurements}
-             />
-            <RecipeSteps steps={this.state.recipe.steps} />
-            <Button onClick={this.handleEditClicked}>Edit</Button>
-            <Button onClick={this.handleDeleteClicked}>Delete</Button>
-          </div>
+          <RecipeViewWrapper>
+            <LeftPart>
+              <RecipeInfo info={this.state.recipe.info} />
+              <IngredientRow>
+                <LeftPart>
+                  <RecipeIngredients
+                    ingredients={this.state.recipe.ingredients}
+                    quantities={this.state.recipe.quantities}
+                    measurements={this.state.recipe.measurements}
+                   />
+                 </LeftPart>
+                 <RightPart>
+                   <Button onClick={this.handleEditClicked}>Edit</Button>
+                   <Button onClick={this.handleDeleteClicked}>Delete</Button>
+                </RightPart>
+            </IngredientRow>
+            </LeftPart>
+            <RightPart>
+              <RecipeSteps steps={this.state.recipe.steps} />
+            </RightPart>
+          </RecipeViewWrapper>
           : 'Recipe not found'
         }
       </div>

@@ -1,9 +1,11 @@
 import React from 'react';
+//Style
+import { SideWrapper } from './styles/RecipeViewStyle.js';
 
 const RecipeIngredients = ({ingredients, quantities, measurements}) => {
   return(
-    <div className='recipe-ingredients'>
-      <h4>Ingredients</h4>
+    <SideWrapper>
+      <strong><p>Ingredients</p></strong>
       <ul>
         {
           ingredients.map((ingredient, index) => {
@@ -16,7 +18,7 @@ const RecipeIngredients = ({ingredients, quantities, measurements}) => {
           })
         }
       </ul>
-    </div>
+    </SideWrapper>
   );
 }
 export default RecipeIngredients;
