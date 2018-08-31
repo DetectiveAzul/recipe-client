@@ -3,9 +3,8 @@ import { navigate } from '@reach/router';
 import {prettyTime} from '../_helpers/prettify'
 import {
   RecipeWrapper, TitleWrapper,
-  DescriptionWrapper, TimeWrapper,
-  InfoWrapper
-} from './styles/ComponentStyle.js';
+  DescriptionWrapper, TimeWrapper
+} from './styles/RecipeSmallStyle.js';
 
 
 
@@ -17,8 +16,8 @@ const RecipeSmall = ({ recipe, deleteRecipe }) => {
     <RecipeWrapper onClick={handleClick}>
       <TitleWrapper>{recipe.name}</TitleWrapper>
       <DescriptionWrapper>{recipe.description}</DescriptionWrapper>
-      <TimeWrapper> ⏰ <strong>Preparation</strong>: {prettyTime(recipe.preptime)}</TimeWrapper>
-      <TimeWrapper> ⏰ <strong>Cook time:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
+      <TimeWrapper> ⏰ <strong>Prep:</strong> {prettyTime(recipe.preptime)}</TimeWrapper>
+      <TimeWrapper> ⏰ <strong>Cook:</strong> {prettyTime(recipe.cooktime)}</TimeWrapper>
     </RecipeWrapper>
   );
 };

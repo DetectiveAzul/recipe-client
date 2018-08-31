@@ -7,7 +7,7 @@ import config from '../_helpers/config.js';
 import RecipeInfo from '../_components/RecipeView/RecipeInfo.js'
 import RecipeIngredients from '../_components/RecipeView/RecipeIngredients.js'
 import RecipeSteps from '../_components/RecipeView/RecipeSteps.js'
-import { Button } from '../_components/styles/ComponentStyle.js';
+import { Button } from '../_components/styles/RecipeSmallStyle.js';
 import { navigate } from '@reach/router';
 
 class IndividualRecipe extends Component {
