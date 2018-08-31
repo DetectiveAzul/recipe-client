@@ -9,7 +9,8 @@ import { navigate } from '@reach/router';
 
 //Styles
 import {
-  RecipeViewWrapper, LeftPart, RightPart, IngredientRow, Button
+  RecipeViewWrapper, LeftPart, RightPart, IngredientRow, Button,
+  StepsPart, BodyWrapper
 } from './styles/IndividualRecipeStyle.js';
 
 class IndividualRecipe extends Component {
@@ -41,7 +42,7 @@ class IndividualRecipe extends Component {
 
   render() {
     return(
-      <div className='individual-recipe'>
+      <BodyWrapper>
         {
           (this.state.recipe) ?
           <RecipeViewWrapper>
@@ -61,13 +62,13 @@ class IndividualRecipe extends Component {
                 </RightPart>
             </IngredientRow>
             </LeftPart>
-            <RightPart>
+            <StepsPart>
               <RecipeSteps steps={this.state.recipe.steps} />
-            </RightPart>
+            </StepsPart>
           </RecipeViewWrapper>
           : 'Recipe not found'
         }
-      </div>
+      </BodyWrapper>
     );
   }
 };

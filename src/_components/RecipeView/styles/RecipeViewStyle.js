@@ -18,6 +18,8 @@ export const DescriptionWrapper = styled.div `
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   margin: 15px;
   padding: 20px;
+  max-height: 55px;
+  overflow: scroll;
 
 `
 export const TimeWrapper = styled.div `
@@ -36,4 +38,6 @@ export const SideWrapper = styled.div `
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   margin: 15px;
   padding: 20px;
+  height: 100%;
+  overflow: scroll;
 `

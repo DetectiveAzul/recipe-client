@@ -6,6 +6,5 @@ export const RecipeListWrapper = styled.div `
   flex-wrap: wrap;
   min-width: 600px;
   max-width: 95%;
-  max-height: 75vh;
   justify-content: center;
 `

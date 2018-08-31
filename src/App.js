@@ -17,6 +17,7 @@ import {
 import styled from 'styled-components';
 const RouterWrapper = styled.div`
   top: 110px;
+  max-height: 75vh;
   width: 95%;
   min-width: 600px;
   overflow: scroll;
