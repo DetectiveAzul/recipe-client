@@ -7,6 +7,7 @@ import RecipeForm from '../_components/RecipeEdit/RecipeForm.js';
 let EditRecipe = (props) => {
 
   const editRecipe = (newBody, id) => {
+    console.log(newBody);
     props.dispatch(updateRecipe(newBody, id));
     navigate(`/recipes/`);
   }

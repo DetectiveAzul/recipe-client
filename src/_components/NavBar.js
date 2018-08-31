@@ -15,7 +15,7 @@ const NavLink = props => (
       return {
         style: {
           color: isCurrent ? "red" : "blue",
-          "text-decoration": "none"
+          textDecoration: "none"
         }
       };
     }}
