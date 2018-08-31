@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 export const RecipeListWrapper = styled.div `
   display: flex;
-  top: 120px;
-  overflow: scroll;
-  position: fixed;
   flex-direction: row;
   flex-wrap: wrap;
   min-width: 600px;

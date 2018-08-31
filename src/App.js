@@ -13,6 +13,13 @@ import {
   fetchRecipes,
   deleteRecipe
 } from './redux/actions/index';
+//style
+import styled from 'styled-components';
+const RouterWrapper = styled.div`
+  top: 120px;
+  overflow: scroll;
+  position: fixed;
+`
 
 class App extends Component{
 
@@ -37,14 +44,16 @@ class App extends Component{
     return(
       <div className='App'>
         <NavBar />
-        <Router>
-          <Home path="/" />
-          <RecipesContainer path="/recipes/" recipes={recipes}  />
-          <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
-          <EditRecipe path="/recipes/:id/edit" />
-          <NewRecipe path="/recipes/new" />
-          <NotFound default />
-        </Router>
+        <RouterWrapper >
+          <Router>
+            <Home path="/" />
+            <RecipesContainer path="/recipes/" recipes={recipes}  />
+            <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
+            <EditRecipe path="/recipes/:id/edit" />
+            <NewRecipe path="/recipes/new" />
+            <NotFound default />
+          </Router>
+        </RouterWrapper>
       </div>
     )
   }

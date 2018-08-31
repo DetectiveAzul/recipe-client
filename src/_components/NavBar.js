@@ -6,6 +6,21 @@ import {
   LinkList, LogoWrapper, LinkWrapper
 } from './styles/NavBarStyle.js';
 
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      // the object returned here is passed to the
+      // anchor element's props
+      return {
+        style: {
+          color: isCurrent ? "red" : "blue",
+          "text-decoration": "none"
+        }
+      };
+    }}
+  />
+);
 
 const NavBar = () => {
   return(
@@ -15,9 +30,9 @@ const NavBar = () => {
         <Tomato/>
       </LogoWrapper>
       <LinkList>
-        <LinkWrapper><Link to="/">Home</Link></LinkWrapper>
-        <LinkWrapper><Link to="/recipes/">Recipes</Link></LinkWrapper>
-        <LinkWrapper><Link to="/recipes/new/">New</Link></LinkWrapper>
+        <LinkWrapper><NavLink to="/">Home</NavLink></LinkWrapper>
+        <LinkWrapper><NavLink to="/recipes/">Recipes</NavLink></LinkWrapper>
+        <LinkWrapper><NavLink to="/recipes/new/">New</NavLink></LinkWrapper>
       </LinkList>
     </NavBarWrapper>
   );

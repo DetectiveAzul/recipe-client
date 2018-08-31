@@ -34,5 +34,16 @@ export const LinkList = styled.div`
   display: flex;
   justify-content: flex-end;
 `
-export const LinkWrapper = styled.div`
+export const LinkWrapper = styled.button`
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  text-decoration: none;
+  height: 55px;
+  width: 110px;
+  background-color: rgba(255,250,250, 0.8);
+  margin: 10px;
+  margin-top: 15px;
+  color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
 `
