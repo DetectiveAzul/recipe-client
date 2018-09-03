@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import uuidv1 from  'uuid/v1';
+//Style
+import {
+  TableHeader, TableRow, TableContainer
+} from './styles/TableStyle.js';
 
 class Table extends Component{
 
@@ -18,17 +22,19 @@ class Table extends Component{
      return (
        <tr key={uuidv1()}>
          {dataColumns.map(function(column) {
-           return <td key={uuidv1()}>{row[column]}</td>; })}
+           return <TableRow key={uuidv1()}>{row[column]}</TableRow>; })}
        </tr>); });
    return (
      <div>
-       <h3>{this.props.name}</h3>
+       <TableHeader>{this.props.name}</TableHeader>
+       <TableContainer>
        <table className="table table-bordered table-hover" width="100%">
          {tableHeaders}
          <tbody>
          {tableBody}
          </tbody>
         </table>
+      </TableContainer>
       </div>
      )
   }

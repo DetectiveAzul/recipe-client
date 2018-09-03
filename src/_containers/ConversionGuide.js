@@ -18,4 +18,4 @@ import {
   )
 }
 
-export default ConversionGuide
+export default ConversionGuide;
