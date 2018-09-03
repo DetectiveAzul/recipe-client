@@ -27,7 +27,7 @@ const NavBar = () => {
     <NavBarWrapper>
       <LogoWrapper>
         <TitleWrapper>foodie</TitleWrapper>
-        <Tomato/>
+        <a href="/"><Tomato/></a>
       </LogoWrapper>
       <LinkList>
         <LinkWrapper><NavLink to="/">Home</NavLink></LinkWrapper>
