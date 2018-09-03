@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uuidv1 from  'uuid/v1';
+import {TableWrapper, TitleWrapper} from './styles/TableStyle.js'
 
 class Table extends Component{
 
@@ -22,13 +23,17 @@ class Table extends Component{
        </tr>); });
    return (
      <div>
-       <h3>{this.props.name}</h3>
-       <table className="table table-bordered table-hover" width="100%">
-         {tableHeaders}
-         <tbody>
-         {tableBody}
-         </tbody>
-        </table>
+        <TitleWrapper>
+         <h3>{this.props.name}</h3>
+        </TitleWrapper>
+         <TableWrapper>
+         <table className="table table-bordered table-hover" width="100%">
+           {tableHeaders}
+           <tbody>
+           {tableBody}
+           </tbody>
+          </table>
+        </TableWrapper>
       </div>
      )
   }
