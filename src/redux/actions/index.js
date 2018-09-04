@@ -6,6 +6,8 @@ const ROOT_URL = 'http://localhost:3001/api';
 //CONSTANTS
 export const REQUEST_RECIPES = "REQUEST_RECIPES";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
+export const REQUEST_RANDOM_RECIPE = "REQUEST_RANDOM_RECIPE";
+export const RECEIVE_RANDOM_RECIPE = "RECEIVE_RANDOM_RECIPE";
 export const ADD_RECIPE = 'ADD_RECIPE';
 export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const UPDATE_RECIPE = 'UPDATE_RECIPE';
@@ -38,6 +40,28 @@ export function fetchRecipes() {
     return fetch(`${ROOT_URL}/recipes`)
       .then(response => response.json())
       .then(json => dispatch(receiveRecipes(json)))
+  }
+}
+
+export function requestRandomRecipe() {
+  return{
+    type: REQUEST_RANDOM_RECIPE
+  }
+}
+
+export function receiveRandomRecipe(json) {
+  return {
+    type: RECEIVE_RANDOM_RECIPE,
+    randomRecipe: json.data
+  }
+}
+
+export function fetchRandomRecipe(){
+  return dispatch => {
+    dispatch(requestRandomRecipe())
+    return fetch(`${ROOT_URL}/recipes/random`)
+      .then(response => response.json())
+      .then(json => dispatch(receiveRandomRecipe(json)))
   }
 }
 
@@ -84,7 +108,6 @@ export function updateRecipeSuccess(recipe, id) {
      }
   }
 }
-
 
 export function deleteRecipeSuccess(id) {
   return{

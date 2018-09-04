@@ -9,10 +9,12 @@ import NewRecipe from './_containers/NewRecipe.js';
 import EditRecipe from './_containers/EditRecipe.js';
 import NavBar from './_components/NavBar.js';
 import ConversionGuide from './_containers/ConversionGuide'
+import ApiHelper from './_helpers/ApiHelper'
 import { connect } from 'react-redux';
 import {
   fetchRecipes,
-  deleteRecipe
+  deleteRecipe,
+  fetchRandomRecipe
 } from './redux/actions/index';
 //style
 import styled from 'styled-components';
@@ -30,12 +32,13 @@ class App extends Component{
   constructor(props){
     super(props)
 
-    this.deleteRecipe = this.deleteRecipe.bind(this)
+    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   componentDidMount(){
     const dispatch = this.props.dispatch
     dispatch(fetchRecipes())
+    dispatch(fetchRandomRecipe())
   }
 
   deleteRecipe(id){
@@ -43,14 +46,15 @@ class App extends Component{
     dispatch(deleteRecipe(id))
   }
 
+
   render(){
-      const { recipes } = this.props
+    const { recipes, randomRecipe } = this.props
     return(
       <div className='App'>
         <NavBar />
         <RouterWrapper >
           <Router>
-            <Home path="/" />
+            <Home path="/" recipe={randomRecipe}/>
             <RecipesContainer path="/recipes/" recipes={recipes}  />
             <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
             <EditRecipe path="/recipes/:id/edit" />
@@ -66,7 +70,8 @@ class App extends Component{
 
 function mapStateToProps(state){
   return {
-    recipes: state.recipesReducer.recipes
+    recipes: state.recipesReducer.recipes,
+    randomRecipe: state.randomRecipeReducer.randomRecipe
   }
 }
 

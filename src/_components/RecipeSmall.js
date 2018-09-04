@@ -6,8 +6,6 @@ import {
   DescriptionWrapper, TimeWrapper
 } from './styles/RecipeSmallStyle.js';
 
-
-
 const RecipeSmall = ({ recipe, deleteRecipe }) => {
   const handleClick = () => {
     navigate(`/recipes/${recipe.id}`);
