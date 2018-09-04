@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RecipeSmall from '../_components/RecipeSmall'
+import { Button } from './styles/HomeStyle'
 
 //Style
 import {
@@ -16,9 +17,9 @@ export default class Home extends Component {
     }
     return (
         <div>
-          <Box> <h1> This is the home page </h1> </Box>
-          <Box><h3>Random recipe</h3></Box>
+          <Box> <h1> Want a random recipe? Here's one below! </h1> </Box>
           <RecipeSmall recipe={this.props.recipe} />
+          <Button onClick={this.props.newRecipe}>Get another random recipe</Button>
         </div>
       )
   }
