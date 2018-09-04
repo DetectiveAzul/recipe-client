@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import uuidv1 from  'uuid/v1';
-<<<<<<< HEAD
-import {TableWrapper, TitleWrapper} from './styles/TableStyle.js'
-=======
+
 //Style
 import {
   TableHeader, TableRow, TableContainer
 } from './styles/TableStyle.js';
->>>>>>> 1211413b1ae14e8d2e054650425046e0cd500afe
+
 
 class Table extends Component{
 
@@ -30,19 +28,6 @@ class Table extends Component{
        </tr>); });
    return (
      <div>
-<<<<<<< HEAD
-        <TitleWrapper>
-         <h3>{this.props.name}</h3>
-        </TitleWrapper>
-         <TableWrapper>
-         <table className="table table-bordered table-hover" width="100%">
-           {tableHeaders}
-           <tbody>
-           {tableBody}
-           </tbody>
-          </table>
-        </TableWrapper>
-=======
        <TableHeader>{this.props.name}</TableHeader>
        <TableContainer>
        <table className="table table-bordered table-hover" width="100%">
@@ -52,7 +37,7 @@ class Table extends Component{
          </tbody>
         </table>
       </TableContainer>
->>>>>>> 1211413b1ae14e8d2e054650425046e0cd500afe
+
       </div>
      )
   }
