@@ -33,6 +33,7 @@ class App extends Component{
     super(props)
 
     this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.getNewRandomRecipe = this.getNewRandomRecipe.bind(this);
   }
 
   componentDidMount(){
@@ -46,6 +47,10 @@ class App extends Component{
     dispatch(deleteRecipe(id))
   }
 
+  getNewRandomRecipe(){
+    const dispatch = this.props.dispatch;
+    dispatch(fetchRandomRecipe())
+  }
 
   render(){
     const { recipes, randomRecipe } = this.props
@@ -54,7 +59,7 @@ class App extends Component{
         <NavBar />
         <RouterWrapper >
           <Router>
-            <Home path="/" recipe={randomRecipe}/>
+            <Home path="/" recipe={randomRecipe} newRecipe={this.getNewRandomRecipe}/>
             <RecipesContainer path="/recipes/" recipes={recipes}  />
             <IndividualRecipe path="/recipes/:id" deleteRecipe={this.deleteRecipe}/>
             <EditRecipe path="/recipes/:id/edit" />
