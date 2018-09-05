@@ -9,7 +9,6 @@ import NewRecipe from './_containers/NewRecipe.js';
 import EditRecipe from './_containers/EditRecipe.js';
 import NavBar from './_components/NavBar.js';
 import ConversionGuide from './_containers/ConversionGuide'
-import ApiHelper from './_helpers/ApiHelper'
 import { connect } from 'react-redux';
 import {
   fetchRecipes,
