@@ -78,6 +78,7 @@ describe('Recipe Testing', () => {
             cy.contains('-').click();
             cy.get('.ingredient-field').then(($fields) => {
                 expect($fields).to.have.length(2);
+                cy.contains('-').click();
             });
         });
 
@@ -88,14 +89,21 @@ describe('Recipe Testing', () => {
             .should('have.value', expectedText);
         });
 
-        xit('should be able to add and remove step', () => {
-            cy.contains('+').click().click();
-            cy.get('.step-field').then(($fields) => {
-                expect($fields).to.have.length(3);
-            });
-            cy.contains('-').click();
-            cy.get('.step-field').then(($fields) => {
-                expect($fields).to.have.length(2);
+        it('should be able to add and remove step', () => {
+            cy.get('.fDXsSF').then(($buttons) => {
+                $buttons[2].click();
+                $buttons[2].click();
+
+                cy.get('.step-field').then(($fields) => {
+                    expect($fields).to.have.length(3);
+
+                    $buttons[3].click();
+                    cy.get('.step-field').then(($fields) => {
+                        expect($fields).to.have.length(2);
+                        $buttons[3].click();
+                   });
+                });
+
             });
         });
 
