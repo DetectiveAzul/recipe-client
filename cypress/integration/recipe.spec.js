@@ -44,8 +44,14 @@ describe('Recipe Testing', () => {
                 .should('have.value', expectedTest);
         });
 
-        xit('should be able to input the recipe times', () => {
-
+        it('should be able to input the recipe times', () => {
+            const expectedTime = '22:22'
+            cy.get('input[name="prep_time"]')
+                .type(expectedTime)
+                .should('have.value', expectedTime);
+            cy.get('input[name="cook_time"]')
+                .type(expectedTime)
+                .should('have.value', expectedTime);
         });
 
         xit('should be able to input a recipe ingredient', () => {
