@@ -21,7 +21,7 @@ describe('Recipe Testing', () => {
         
         it('should come back to Homepage after clicking on Home', () => {
             cy.get('Button').contains('Home').click();
-            cy.url().should('have.value', 'http://localhost:3000');
-        })
+            cy.url().should('eq', 'http://localhost:3000/');
+        });
     });
 });
