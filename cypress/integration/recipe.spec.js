@@ -54,12 +54,24 @@ describe('Recipe Testing', () => {
                 .should('have.value', expectedTime);
         });
 
-        xit('should be able to input a recipe ingredient', () => {
+        it('should be able to input a recipe ingredient', () => {
+            const expectedAmount = '99';
+            const expectedIngredient = 'Test Ingredient 1';
+            const expectedMeasure = 'pints';
 
+            cy.get('input[name="quantity-0"]')
+                .type(expectedAmount)
+                .should('have.value', expectedAmount);
+            cy.get('select[name="measurement-0"]')
+                .select(expectedMeasure)
+                .should('have.value', expectedMeasure);
+            cy.get('input[name="ingredient-0"]')
+                .type(expectedIngredient)
+                .should('have.value', expectedIngredient)
         });
 
         xit('should be able to add and remove ingredients', () => {
-
+            cy.contains('+')
         });
 
         xit('should be able to input a recipe step', () => {
