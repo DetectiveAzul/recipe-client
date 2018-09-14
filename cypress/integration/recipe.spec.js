@@ -37,8 +37,11 @@ describe('Recipe Testing', () => {
                 .should('have.value', expectedTest);
         });
 
-        xit('should be able to input the recipe description', () => {
-
+        it('should be able to input the recipe description', () => {
+            const expectedTest = 'Cypress Test Recipe Description'
+            cy.get('textarea[name="description"]')
+                .type(expectedTest)
+                .should('have.value', expectedTest);
         });
 
         xit('should be able to input the recipe times', () => {
