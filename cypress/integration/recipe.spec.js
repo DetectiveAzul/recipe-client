@@ -70,8 +70,15 @@ describe('Recipe Testing', () => {
                 .should('have.value', expectedIngredient)
         });
 
-        xit('should be able to add and remove ingredients', () => {
-            cy.contains('+')
+        it('should be able to add and remove ingredients', () => {
+            cy.contains('+').click().click();
+            cy.get('.ingredient-field').then(($fields) => {
+                expect($fields).to.have.length(3);
+            });
+            cy.contains('-').click();
+            cy.get('.ingredient-field').then(($fields) => {
+                expect($fields).to.have.length(2);
+            });
         });
 
         xit('should be able to input a recipe step', () => {
