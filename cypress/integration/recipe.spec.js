@@ -17,6 +17,11 @@ describe('Recipe Testing', () => {
         it('should enter conversion guide after clicking on Conversion Guide', () => {
             cy.get('Button').contains('Conversion Guide').click();
             cy.url().should('include', '/guide');
-        });    
+        });
+        
+        it('should come back to Homepage after clicking on Home', () => {
+            cy.get('Button').contains('Home').click();
+            cy.url().should('have.value', 'http://localhost:3000');
+        })
     });
 });
