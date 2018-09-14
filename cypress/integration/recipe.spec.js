@@ -26,15 +26,17 @@ describe('Recipe Testing', () => {
     });
 
     context('Testing creation of a new Recipe', () => {
+        let expectedName = undefined;
+
         before(() => {
             cy.visit('/recipes/new');
+            expectedName = 'Cypress Test Recipe';
         });
 
         it('should be able to input the recipe name', () => {
-            const expectedTest = 'Cypress Test Recipe'
             cy.get('input[name="name"]')
-                .type(expectedTest)
-                .should('have.value', expectedTest);
+                .type(expectedName)
+                .should('have.value', expectedName);
         });
 
         it('should be able to input the recipe description', () => {
@@ -107,9 +109,22 @@ describe('Recipe Testing', () => {
             });
         });
 
-        xit('should be able to submit the recipe and find it on the index', () => {
+        it('should be able to submit the recipe, and find it on the index', () => {
+            cy.contains('Add Recipe').click();
+            cy.url().should('include', '/recipes');
+            cy.contains(expectedName).click();
+            cy.get('.sc-htoDjs').should('have.text', expectedName);
+            cy.contains('Delete').click();
+            cy.get('.sc-bwzfXH').then(($recipes) => {
+                const isItDeleted = true;
+                $recipes.each(($recipe) => {
+                    if ($recipe.text === expectedName) isItDeleted = false;
+                });
+                expect(isItDeleted).to.equal(true);
+            });
 
         });
+
 
     });
 });
