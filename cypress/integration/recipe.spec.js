@@ -81,12 +81,22 @@ describe('Recipe Testing', () => {
             });
         });
 
-        xit('should be able to input a recipe step', () => {
-
+        it('should be able to input a recipe step', () => {
+            const expectedText = 'This is a Test Step';
+            cy.get('textarea[name="step-0"]')
+            .type(expectedText)
+            .should('have.value', expectedText);
         });
 
         xit('should be able to add and remove step', () => {
-
+            cy.contains('+').click().click();
+            cy.get('.step-field').then(($fields) => {
+                expect($fields).to.have.length(3);
+            });
+            cy.contains('-').click();
+            cy.get('.step-field').then(($fields) => {
+                expect($fields).to.have.length(2);
+            });
         });
 
         xit('should be able to submit the recipe and find it on the index', () => {
