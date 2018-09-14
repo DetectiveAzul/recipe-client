@@ -24,4 +24,46 @@ describe('Recipe Testing', () => {
             cy.url().should('eq', 'http://localhost:3000/');
         });
     });
+
+    context('Testing creation of a new Recipe', () => {
+        before(() => {
+            cy.visit('/recipes/new');
+        });
+
+        it('should be able to input the recipe name', () => {
+            const expectedTest = 'Cypress Test Recipe'
+            cy.get('input[name="name"]')
+                .type(expectedTest)
+                .should('have.value', expectedTest);
+        });
+
+        xit('should be able to input the recipe description', () => {
+
+        });
+
+        xit('should be able to input the recipe times', () => {
+
+        });
+
+        xit('should be able to input a recipe ingredient', () => {
+
+        });
+
+        xit('should be able to add and remove ingredients', () => {
+
+        });
+
+        xit('should be able to input a recipe step', () => {
+
+        });
+
+        xit('should be able to add and remove step', () => {
+
+        });
+
+        xit('should be able to submit the recipe and find it on the index', () => {
+
+        });
+
+    });
 });
