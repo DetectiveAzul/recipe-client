@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: 'http://localhost:3001/api',
+  apiUrl: 'https://api-foodie.herokuapp.com/api',
 };
 
 export default config;

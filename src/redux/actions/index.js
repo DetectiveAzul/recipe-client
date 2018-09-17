@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
 import ApiHelper from '../../_helpers/ApiHelper'
 
-const ROOT_URL = 'http://localhost:3001/api';
+const ROOT_URL = 'https://api-foodie.herokuapp.com/api';
 
 //CONSTANTS
 export const REQUEST_RECIPES = "REQUEST_RECIPES";
